@@ -24,10 +24,6 @@ ymaps.load().then((maps: any) => {
   const myMap = new maps.Map(map.value, {
     center: props.cords,
     ...props,
-    // options: {
-    //   suppressMapOpenBlock: true,
-    // },
-
     // controls: ["geolocationControl"],
   });
 

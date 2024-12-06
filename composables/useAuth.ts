@@ -39,7 +39,7 @@ export default async () => {
       setUser(resp);
 
       if (isRedirect) {
-        navigateTo({ name: "chats" });
+        navigateTo(ROUTES_NAMES.main);
       }
     } catch (error) {
       console.error(error);
@@ -99,7 +99,7 @@ export default async () => {
     if (params) {
       navigateTo(params);
     } else {
-      navigateTo("/login");
+      navigateTo(ROUTES_NAMES.login);
     }
   };
 
