@@ -6,5 +6,6 @@ export interface clinic {
   rating: number;
   longitude: number;
   latitude: number;
+  description?: string;
   owner_id: number;
 }

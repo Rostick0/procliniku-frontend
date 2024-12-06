@@ -6,7 +6,7 @@
       <span>Клиники</span>
     </div>
     <div class="flex gap-x-1.5 items-start mb-4">
-     <ClinicInfo />
+     <ClinicInfo :clinic="clinic" />
       <div class="w-full">
         <UiYandexMap :cords="[clinic?.longitude, clinic?.latitude]" />
       </div>

@@ -2,7 +2,7 @@
   <div class="search">
     <div class="search-field flex">
       <UiButton
-        class="search__button flex px-3 py-2 items-center justify-center w-auto"
+        class="search__button flex px-3 py-2 items-center justify-center"
       >
         <IconSearch />
       </UiButton>
@@ -32,6 +32,7 @@ const searchQuery = ref();
     background-color: transparent;
     border-right: 2px solid var(--ui-color);
     border-radius: 0;
+    width: auto;
   }
 
   &__input {
