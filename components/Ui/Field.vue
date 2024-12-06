@@ -22,7 +22,6 @@ const props = defineProps({
   leftIcon: String,
   rightIcon: String,
   message: String,
-  placeholder: String,
   maska: {
     type: [String, Array],
   },

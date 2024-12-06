@@ -14,7 +14,7 @@
     <main class="main grow">
       <slot />
     </main>
-    <footer class="footer font-semibold text-sm px-8 pt-5 pb-4">
+    <footer class="footer font-semibold text-sm px-8 pt-5 pb-4 mt-8">
       <div class="opacity-60">
         <div class="flex gap-x-12 mb-12">
           <div class="footer-menu__item">

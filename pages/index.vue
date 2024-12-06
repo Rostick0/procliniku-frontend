@@ -1,12 +1,17 @@
 <template>
   <div class="px-8">
+    <Search />
+    <div class="text-xs mt-6 mb-8">
+      ПроКлинику - Ваш надежный помощник в мире медицинских услуг, лечения и
+      диагностики.
+    </div>
     <ClinicItem v-for="clinic in clinics" :clinic="clinic" />
-    <!-- <UiButton>312</UiButton> --> 
+    <!-- <UiButton>312</UiButton> -->
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { clinic } from "~/interfaces/clinit";
+import type { clinic } from "~/interfaces/models/clinic";
 
 const clinics = [
   {
