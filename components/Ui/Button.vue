@@ -8,6 +8,6 @@
 
 <style lang="scss" scoped>
 .btn {
-  background-color: rgb(4, 110, 190);
+  background-color: var(--ui-color);
 }
 </style>
