@@ -25,7 +25,7 @@
 <script lang="ts" setup>
 // import formLite from "vue-form-lite";
 // import { required, maxLength } from "@vue-form-lite/rules";
-import type { ILogin } from "~/interfaces/models/user";
+import type { ILogin } from "~/interfaces/models/User";
 
 // const { login } = await useAuth();
 

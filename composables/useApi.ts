@@ -94,13 +94,11 @@ export default async <T>({
 
       await api?.[apiName]?.[apiMethod]?.(preParams, headers)?.then(
         async (res: any) => {
-          // const { data: dataLocal, ...other } = res;
-          const dataLocal = res;
-          // const { data: dataLocal, ...other } = res;
+          const { data: dataLocal, ...other } = res;
+          // const dataLocal = res;
 
-          // data.value = dataLocal ?? res;
-          data.value = res;
-          // meta.value = other;
+          data.value = dataLocal ?? res;
+          meta.value = other;
 
           if (withCache) {
             cache.value = [

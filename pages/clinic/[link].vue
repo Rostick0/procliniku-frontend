@@ -30,20 +30,19 @@
 </template>
 
 <script lang="ts" setup>
-import type { clinic } from "~/interfaces/models/clinic";
+import type IClinic from "~/interfaces/models/Clinic";
 
 const data = {
   id: 1,
   name: "ABOBA",
   address: "800 летие москвы",
-  phone: "88005553535",
   rating: 4,
   longitude: 55.55,
   latitude: 37.3736,
   owner_id: 1,
   description:
     'В медицинском центре "Ультрамед+" можно пройти все виды УЗИ пациентам любого возраста. В современном оборудованном центре принимают специалисты различного профиля, все высшей категории. К вашим услугам акушер-гинеколог, маммолог-онколог, терапевт-гастроэнтеролог, эндокринолог и гематолог. ',
-} as clinic;
+} as IClinic;
 </script>
 
 <style lang="scss" scoped>

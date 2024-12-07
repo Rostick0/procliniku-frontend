@@ -5,26 +5,37 @@
       ПроКлинику - Ваш надежный помощник в мире медицинских услуг, лечения и
       диагностики.
     </div>
-    <ClinicItem v-for="clinic in clinics" :clinic="clinic" />
+    <ClinicItem v-for="clinic in data" :clinic="clinic" />
     <!-- <UiButton>312</UiButton> -->
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { clinic } from "~/interfaces/models/clinic";
+import type IClinic from "~/interfaces/models/Clinic";
+
+const { data, get } = await useApi<IClinic[]>({
+  apiName: "clinics",
+  apiMethod: "getAll",
+  params: {
+    extends: "clinic_phones",
+  },
+});
+await get();
+
+console.log(data.value);
 
 const clinics = [
   {
     id: 1,
     name: "ABOBA",
-    address: "800 летие москвы",
+    address: "800 летие москвы вфы",
     phone: "88005553535",
     rating: 4,
     longitude: 55.55,
     latitude: 37.3736,
     owner_id: 1,
   },
-] as clinic[];
+] as IClinic[];
 </script>
 
 <style lang="scss" scoped></style>

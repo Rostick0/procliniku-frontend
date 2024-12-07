@@ -1,6 +1,5 @@
+import clinics from "./modules/clinics";
 import users from "./modules/users";
-import chats from "./modules/chats";
-import messages from "./modules/messages";
 
 interface apiMethods {
   get?: ({ id, params }: { id: number | string; params?: any }) => Promise<any>;
@@ -19,9 +18,8 @@ interface apiMethods {
 }
 
 const api = {
+  clinics,
   users,
-  chats,
-  messages,
 };
 
 type apiNames = keyof typeof api;

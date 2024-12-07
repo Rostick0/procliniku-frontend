@@ -3,24 +3,24 @@
     <div class="clinic__title font-bold text-sm mb-3">{{ clinic?.name }}</div>
     <div class="flex items-center gap-x-1.5 text-ui text-xs mb-4">
       <IconList />
-      <span>Клиники</span>
+      <span>{{ clinic?.main_category?.name }}</span>
     </div>
     <div class="flex gap-x-1.5 items-start mb-4">
-     <ClinicInfo :clinic="clinic" />
-      <div class="w-full">
+      <ClinicInfo class="clinic__info" :clinic="clinic" />
+      <div class="grow">
         <UiYandexMap :cords="[clinic?.longitude, clinic?.latitude]" />
       </div>
     </div>
-    <NuxtLink class="flex" to="">
+    <NuxtLink class="flex" :to="`${ROUTES_NAMES.clinic}/${clinic?.link_name}`">
       <UiButton>Узнать больше</UiButton>
     </NuxtLink>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { clinic } from "~/interfaces/models/clinic";
+import type IClinic from "~/interfaces/models/Clinic";
 interface IProps {
-  clinic: clinic;
+  clinic: IClinic;
 }
 
 const props = defineProps<IProps>();
@@ -35,7 +35,7 @@ const props = defineProps<IProps>();
   }
 
   &__info {
-    font-size: 11px;
+    width: 36.6vw;
   }
 }
 </style>
