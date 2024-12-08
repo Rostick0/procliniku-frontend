@@ -3,7 +3,7 @@ import type ICategory from "./Category";
 import type IClinicCategory from "./ClinicCategory";
 import type IClinicPhone from "./ClinicPhone";
 
-export default interface IClinic {
+export default interface IClinic extends ITimestamps {
   id: number;
   name: string;
   address: string;
@@ -13,6 +13,7 @@ export default interface IClinic {
   longitude: number;
   latitude: number;
   description?: string;
+  is_verification: boolean;
   owner_id: number;
   main_category: ICategory;
   clinic_categories?: IClinicCategory[];

@@ -18,29 +18,31 @@ const props = withDefaults(defineProps<IProps>(), {
 
 const map = ref(null);
 
-ymaps.load().then((maps: any) => {
-  //   console.log(maps);
+onMounted(() => {
+  ymaps.load().then((maps: any) => {
+    //   console.log(maps);
 
-  const myMap = new maps.Map(map.value, {
-    center: props.cords,
-    ...props,
-    // controls: ["geolocationControl"],
+    const myMap = new maps.Map(map.value, {
+      center: props.cords,
+      ...props,
+      // controls: ["geolocationControl"],
+    });
+
+    const myPlacemark = new maps.Placemark(
+      myMap.getCenter()
+      // {},
+      // {
+      //   draggable: true,
+      // }
+    );
+
+    //   myPlacemark.events.add("dragend", function (e: any) {
+    //     const coord = e.get("target").geometry.getCoordinates();
+    //     value.value = coord;
+    //   });
+
+    return myMap.geoObjects.add(myPlacemark);
   });
-
-  const myPlacemark = new maps.Placemark(
-    myMap.getCenter()
-    // {},
-    // {
-    //   draggable: true,
-    // }
-  );
-
-  //   myPlacemark.events.add("dragend", function (e: any) {
-  //     const coord = e.get("target").geometry.getCoordinates();
-  //     value.value = coord;
-  //   });
-
-  return myMap.geoObjects.add(myPlacemark);
 });
 
 // await ymaps.then(res => res.)

@@ -5,7 +5,7 @@
       ПроКлинику - Ваш надежный помощник в мире медицинских услуг, лечения и
       диагностики.
     </div>
-    <ClinicItem v-for="clinic in data" :clinic="clinic" />
+    <ClinicList :clinics="data" />
     <!-- <UiButton>312</UiButton> -->
   </div>
 </template>
@@ -24,18 +24,17 @@ await get();
 
 console.log(data.value);
 
-const clinics = [
-  {
-    id: 1,
-    name: "ABOBA",
-    address: "800 летие москвы вфы",
-    phone: "88005553535",
-    rating: 4,
-    longitude: 55.55,
-    latitude: 37.3736,
-    owner_id: 1,
-  },
-] as IClinic[];
+// const clinics = [
+//   {
+//     id: 1,
+//     name: "ABOBA",
+//     address: "800 летие москвы вфы",
+//     rating: 4,
+//     longitude: 55.55,
+//     latitude: 37.3736,
+//     owner_id: 1,
+//   },
+// ] as IClinic[];
 </script>
 
 <style lang="scss" scoped></style>

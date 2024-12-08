@@ -23,9 +23,9 @@
       </div>
       <div class="flex gap-x-2.5 mb-6">
         <ClinicInfo :clinic="data" />
-        <div class="clinic__raiting flex-col grow gap-y-1">
+        <div class="clinic__raiting flex flex-col grow gap-y-1">
           <img class="w-full" src="/images/default-image.png" alt="" />
-          <UiStars />
+          <UiStars :modelValue="data?.rating" />
         </div>
       </div>
       <div class="mb-8" v-if="data?.description">
