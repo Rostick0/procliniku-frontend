@@ -1,21 +1,14 @@
 import type { RouteLocationRaw } from "vue-router";
-import api from "~/api";
 // import { NavigateToOptions } from "vue-router";
 import auth from "~/api/auth";
-
-export interface IUser {
-  id?: number;
-  name: string;
-}
+import type IUser from "~/interfaces/models/User";
 
 interface IUserserGenerateToken {
+  access_token: string;
+  expires_in: number;
+  token_type: "bearer";
   user: IUser;
-  token: string;
 }
-
-const defaultUser: IUser = {
-  name: "Admin",
-};
 
 export default async () => {
   const accessToken = useCookie<string | null>("accessToken", {
@@ -24,22 +17,23 @@ export default async () => {
   const user = useState<IUser | null>("user", () => null);
 
   const setUser = (resp: IUserserGenerateToken) => {
-    user.value = resp?.user ?? defaultUser;
-    accessToken.value = resp?.token;
+    user.value = resp?.user;
+    accessToken.value = resp?.access_token;
   };
 
   const login = async (data: any, isRedirect = true) => {
     try {
       const resp = await auth.login(data);
-
+      // if (resp?.error) resp?.popup();
       if (resp?.error) {
         return resp?.errorResponse?.data;
       }
 
-      setUser(resp);
+      setUser(resp?.data);
+      console.log(resp);
 
       if (isRedirect) {
-        navigateTo(ROUTES_NAMES.main);
+        navigateTo(ROUTES_NAMES.profile);
       }
     } catch (error) {
       console.error(error);
@@ -54,9 +48,9 @@ export default async () => {
         return resp?.errorResponse?.data;
       }
 
-      setUser(resp);
+      setUser(resp?.data);
       if (isRedirect) {
-        navigateTo({ name: "index" });
+        navigateTo(ROUTES_NAMES.profile);
       }
     } catch (error) {
       console.error(error);
@@ -65,27 +59,22 @@ export default async () => {
 
   const getUser = async () => {
     try {
-      // await auth
-      // .me(
-      //   //   {
-      //   //     // extends:
-      //   //     //   "contacts,country,image,flat_owners.user,alert,collection_relats.collection",
-      //   //   },
-      //   {},
-      //   { Authorization: `Bearer ${accessToken.value}` }
-      // )
-      // .then((resp) => {
-      //   if (!resp?.error && resp) {
-      //     user.value = resp;
-      //   }
-      // });
-      // const
-      await api.chats.getAll?.({ params: { chatIds: [1] } });
-      user.value = defaultUser;
+      await auth
+        .me(
+          //   {
+          //     // extends:
+          //     //   "contacts,country,image,flat_owners.user,alert,collection_relats.collection",
+          //   },
+          {},
+          { Authorization: `Bearer ${accessToken.value}` }
+        )
+        .then((resp) => {
+          if (!resp?.error && resp) {
+            user.value = resp;
+          }
+        });
     } catch (error) {
       console.error(error);
-      user.value = null;
-      accessToken.value = null;
     }
   };
 

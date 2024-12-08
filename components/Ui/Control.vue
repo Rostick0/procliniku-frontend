@@ -31,7 +31,7 @@
         <slot name="rightIcon" />
       </div>
     </div>
-    <div class="control__message" v-if="message" :class="[{ show: !!message }]">
+    <div class="control__message text-red-600 " v-if="message" :class="[{ show: !!message }]">
       {{ message }}
     </div>
   </div>
@@ -68,9 +68,7 @@ const props = defineProps<Props>();
   width: 100%;
 
   &__message {
-    color: var(--color-red);
     font-size: 12px;
-    padding-left: 12px;
   }
 
   &.isReadOnly {

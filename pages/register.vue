@@ -1,6 +1,6 @@
 <template>
   <form class="auth-form" @submit="onSubmit" method="post">
-    <div class="font-bold text-3xl text-center mb-8">Авторизация</div>
+    <div class="font-bold text-3xl text-center mb-8">Регистрация</div>
     <div class="auth-form__error error mb-3" v-if="errorMessage">
       {{ errorMessage }}
     </div>
