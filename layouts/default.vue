@@ -19,7 +19,7 @@
         <div class="flex gap-x-12 mb-12">
           <div class="footer-menu__item">
             <div class="text-base">ПроКлинику</div>
-            <NuxtLink>Контакты</NuxtLink>
+            <button class="flex" @click="open">Контакты</button>
             <NuxtLink>О сервисе</NuxtLink>
             <NuxtLink>Регионы</NuxtLink>
             <NuxtLink>Города</NuxtLink>
@@ -44,9 +44,34 @@
       </div>
     </footer>
   </div>
+  <LazyUiModal :name="nameModalContacts">
+    <UiModalInner>
+      <div class="flex flex-col items-start gap-y-5">
+        <a class="flex items-center gap-x-2" href="tel:73472019690">
+          <IconTel width="18" height="18" />
+          <span>+7 (347) 201-96-90</span>
+        </a>
+        <a class="flex items-center gap-x-2" :href="`mailto:${SITE_INFO.mail}`">
+          <IconMail width="22" />
+          <span>{{ SITE_INFO.mail }}</span>
+        </a>
+        <a
+          class="flex items-center gap-x-2"
+          :href="SITE_INFO.address_link"
+          target="_blank"
+        >
+          <IconMap class="shrink-0" width="16" height="21" />
+          <span>{{ SITE_INFO.address }}</span>
+        </a>
+      </div>
+    </UiModalInner>
+  </LazyUiModal>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const nameModalContacts = "modal-contacts";
+const { open } = useModal({ name: nameModalContacts });
+</script>
 
 <style lang="scss" scoped>
 .footer {
