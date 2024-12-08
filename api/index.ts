@@ -1,6 +1,8 @@
 import cities from "./modules/cities";
 import clinics from "./modules/clinics";
 import regions from "./modules/regions";
+import serviceCategories from "./modules/serviceCategories";
+import services from "./modules/services";
 import users from "./modules/users";
 
 interface apiMethods {
@@ -23,6 +25,8 @@ const api = {
   cities,
   clinics,
   regions,
+  serviceCategories,
+  services,
   users,
 };
 

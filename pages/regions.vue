@@ -7,7 +7,7 @@
         class="underline decoration-dotted"
         v-for="region in regions"
         :key="region?.id"
-        :to="ROUTES_NAMES.cities"
+        :to="setCityUrl(region?.id)"
       >
         {{ region?.name }}
       </NuxtLink>
@@ -27,6 +27,9 @@ const { filters } = useFilter<{
     "filterLIKE[name]": "",
   },
 });
+
+const setCityUrl = (regionId: number) =>
+  ROUTES_NAMES.cities + `?filterEQ[region_id]=${regionId}`;
 
 watch(
   () => searchQuery.value,

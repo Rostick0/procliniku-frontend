@@ -26,14 +26,14 @@ export default <T>({
   );
 
   if (withInitQueryParams) {
-    onMounted(() => {
-      const params: initialFiltersItem = useRoute().query as initialFiltersItem;
+    // onMounted(() => {
+    const params: initialFiltersItem = useRoute().query as initialFiltersItem;
 
-      filters.value = {
-        ...filters.value,
-        ...params,
-      };
-    });
+    filters.value = {
+      ...filters.value,
+      ...params,
+    };
+    // });
   }
 
   const resetFilterValues = () => {

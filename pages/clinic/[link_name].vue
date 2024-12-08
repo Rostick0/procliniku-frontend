@@ -1,6 +1,5 @@
 <template>
   <div class="px-8">
-    <!-- {{ data }} -->
     <div class="clinic p-5 mt-5 shadow-md">
       <div class="clinic__title font-semibold text-xl mb-3">
         <span>{{ data?.name }}</span>
@@ -23,7 +22,11 @@
       <div class="flex gap-x-2.5 mb-6">
         <ClinicInfo :clinic="data" />
         <div class="clinic__raiting flex flex-col grow gap-y-1">
-          <img class="w-full" src="/images/default-image.png" alt="" />
+          <img
+            class="w-full"
+            src="/images/default-image.svg"
+            :alt="data?.name"
+          />
           <UiStars :modelValue="data?.rating" />
         </div>
       </div>
