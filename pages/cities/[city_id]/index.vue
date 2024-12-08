@@ -6,6 +6,7 @@
     <Search class="mb-6" v-model="seachQuery" />
     <ServiceCategoriesList
       class="mb-4"
+      @makeServiceCategory=""
       :serviceCategories="serviceCategories"
     />
     <div class="font-medium text-ui-2 mb-3" id="titleClinics">
@@ -41,6 +42,7 @@ const { data: serviceCategories, get: getServiceCategories } = await useApi<
 await getServiceCategories();
 
 const { filters } = useFilter<{
+  "filterEQ[clinic_services.service_id]"?: number;
   "filterLIKE[name]": string;
   page: number;
 }>({

@@ -4,7 +4,7 @@
       class="text-left underline decoration-dotted overflow-hidden text-ellipsis text-nowrap"
       v-for="serviceCategory in serviceCategories"
       :key="serviceCategory?.id"
-      @click="emits('setActive', serviceCategory)"
+      @click="emits('makeServiceCategory', serviceCategory)"
       :title="serviceCategory?.name"
       role="button"
     >
@@ -22,7 +22,7 @@ interface IProps {
 
 const props = defineProps<IProps>();
 
-const emits = defineEmits(["setActive"]);
+const emits = defineEmits(["makeServiceCategory"]);
 </script>
 
 <style lang="scss" scoped>

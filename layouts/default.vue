@@ -8,7 +8,9 @@
         <NuxtLink class="flex" :to="ROUTES_NAMES.profile">
           <IconProfile />
         </NuxtLink>
-        <IconBurger />
+        <button class="flex" @click="openMenu">
+          <IconBurger />
+        </button>
       </div>
     </header>
     <main class="main grow">
@@ -19,7 +21,7 @@
         <div class="flex gap-x-12 mb-12">
           <div class="footer-menu__item">
             <div class="text-base">ПроКлинику</div>
-            <button class="flex" @click="open">Контакты</button>
+            <button class="flex" @click="openContacts">Контакты</button>
             <NuxtLink>О сервисе</NuxtLink>
             <NuxtLink :to="ROUTES_NAMES.regions">Регионы</NuxtLink>
             <NuxtLink>Города</NuxtLink>
@@ -45,7 +47,7 @@
     </footer>
   </div>
   <LazyUiModal :name="nameModalContacts">
-    <UiModalInner>
+    <UiModalInner class="py-14 px-4">
       <div class="flex flex-col items-start gap-y-5">
         <a class="flex items-center gap-x-2" href="tel:73472019690">
           <IconTel width="18" height="18" />
@@ -66,11 +68,61 @@
       </div>
     </UiModalInner>
   </LazyUiModal>
+
+  <LazyUiModal :name="nameModalMenu">
+    <UiModalInner class="px-6 py-4">
+      <div class="flex flex-col items-start justify-start gap-y-5 w-full">
+        <NuxtLink
+          class="flex items-center gap-x-2"
+          @click="closeMenu"
+          :to="ROUTES_NAMES.regions"
+        >
+          <IconMap class="shrink-0" width="18" height="17" />
+          <span>Москва</span>
+        </NuxtLink>
+        <NuxtLink
+          class="flex items-center gap-x-2"
+          @click="closeMenu"
+          :to="ROUTES_NAMES.main"
+        >
+          <IconHome class="shrink-0" width="18" height="18" />
+          <span>Главная</span>
+        </NuxtLink>
+        <NuxtLink
+          class="flex items-center gap-x-2"
+          @click="closeMenu"
+          :to="ROUTES_NAMES.clinic"
+        >
+          <IconClinic class="shrink-0" width="18" height="18" />
+          <span>Клиники</span>
+        </NuxtLink>
+        <span
+          class="flex items-center gap-x-2"
+          @click="openContacts(), closeMenu()"
+          role="button"
+        >
+          <IconTel class="shrink-0" width="18" height="18" />
+          <span>Контакты</span>
+        </span>
+        <NuxtLink
+          class="flex items-center gap-x-2"
+          @click="closeMenu"
+          :to="ROUTES_NAMES.about"
+        >
+          <IconPatient class="shrink-0" width="18" height="18" />
+          <span>Пациентам</span>
+        </NuxtLink>
+      </div>
+    </UiModalInner>
+  </LazyUiModal>
 </template>
 
 <script lang="ts" setup>
 const nameModalContacts = "modal-contacts";
-const { open } = useModal({ name: nameModalContacts });
+const { open: openContacts } = useModal({ name: nameModalContacts });
+
+const nameModalMenu = "modal-menu";
+const { open: openMenu, close: closeMenu } = useModal({ name: nameModalMenu });
 </script>
 
 <style lang="scss" scoped>

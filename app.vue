@@ -49,7 +49,6 @@ configure({
 });
 
 const { accessToken, user, getUser } = await useAuth();
-console.log(accessToken.value)
 if (accessToken.value && !user.value) {
   await getUser();
 }

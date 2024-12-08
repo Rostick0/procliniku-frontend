@@ -62,7 +62,6 @@ if (!data) {
   throw navigateTo("/404");
 }
 
-console.log(data);
 // const {data} = await useApi()
 
 // const data = {
