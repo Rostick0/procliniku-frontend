@@ -27,7 +27,7 @@
             <NuxtLink>Тарифы</NuxtLink>
           </div>
           <div class="footer-menu__item">
-            <div class="text-base">ПроКлинику</div>
+            <div class="text-base">Условия использования</div>
             <NuxtLink>Оферта для юр.лиц</NuxtLink>
             <NuxtLink>Оферта для физ.лиц</NuxtLink>
             <NuxtLink>Обработка персональных данных</NuxtLink>
