@@ -21,7 +21,7 @@
             <div class="text-base">ПроКлинику</div>
             <button class="flex" @click="open">Контакты</button>
             <NuxtLink>О сервисе</NuxtLink>
-            <NuxtLink>Регионы</NuxtLink>
+            <NuxtLink :to="ROUTES_NAMES.regions">Регионы</NuxtLink>
             <NuxtLink>Города</NuxtLink>
             <NuxtLink>Соцсети</NuxtLink>
             <NuxtLink>Тарифы</NuxtLink>

@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-y-8" v-if="clinics?.length">
-    <ClinicItem v-for="clinic in clinics" :clinic="clinic" />
+    <ClinicItem v-for="clinic in clinics" :key="clinic?.id" :clinic="clinic" />
   </div>
 </template>
 
