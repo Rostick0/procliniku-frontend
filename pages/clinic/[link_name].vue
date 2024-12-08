@@ -1,6 +1,5 @@
 <template>
   <div class="px-8">
-    <Search />
     <!-- {{ data }} -->
     <div class="clinic p-5 mt-5 shadow-md">
       <div class="clinic__title font-semibold text-xl mb-3">

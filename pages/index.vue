@@ -1,6 +1,6 @@
 <template>
   <div class="px-8">
-    <Search />
+    <Search v-model="searchQuery" />
     <div class="text-xs mt-6 mb-8">
       ПроКлинику - Ваш надежный помощник в мире медицинских услуг, лечения и
       диагностики.
@@ -12,6 +12,21 @@
 
 <script lang="ts" setup>
 import type IClinic from "~/interfaces/models/Clinic";
+import debounce from "lodash/debounce";
+
+const searchQuery = ref();
+const { filters } = useFilter<{
+  filterQ: string;
+}>({
+  initialFilters: {
+    filterQ: "",
+  },
+});
+
+watch(
+  () => searchQuery.value,
+  debounce((cur) => (filters.value.filterQ = cur), 500)
+);
 
 const { data, get } = await useApi<IClinic[]>({
   apiName: "clinics",
@@ -19,6 +34,7 @@ const { data, get } = await useApi<IClinic[]>({
   params: {
     extends: "clinic_phones",
   },
+  filters,
 });
 await get();
 

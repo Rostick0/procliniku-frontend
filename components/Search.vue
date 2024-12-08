@@ -8,17 +8,22 @@
       </UiButton>
       <UiField
         class="search__input"
-        v-model="searchQuery"
-        placeholder="Введите запрос"
+        placeholder="Найти клинику, услугу"
+        :modelValue="modelValue"
+        @update:modelValue="(val) => emits('update:modelValue', val)"
       />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-const prosp = defineProps();
+interface IProps {
+  modelValue: string;
+}
 
-const searchQuery = ref();
+const props = defineProps<IProps>();
+
+const emits = defineEmits(["update:modelValue"]);
 </script>
 
 <style lang="scss" scoped>

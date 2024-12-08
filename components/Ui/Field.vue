@@ -1,7 +1,7 @@
 <template>
   <!-- {{ $attrs }} -->
   <input
-    class="control__field py-1 px-3"
+    class="control__field p-3"
     :class="size"
     :="$attrs"
     v-maska
