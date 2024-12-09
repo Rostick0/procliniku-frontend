@@ -22,17 +22,19 @@
           <div class="footer-menu__item">
             <div class="text-base">ПроКлинику</div>
             <button class="flex" @click="openContacts">Контакты</button>
-            <NuxtLink>О сервисе</NuxtLink>
+            <NuxtLink :to="ROUTES_NAMES.about">О сервисе</NuxtLink>
             <NuxtLink :to="ROUTES_NAMES.regions">Регионы</NuxtLink>
-            <NuxtLink>Города</NuxtLink>
+            <NuxtLink :to="ROUTES_NAMES.cities">Города</NuxtLink>
             <NuxtLink>Соцсети</NuxtLink>
             <NuxtLink>Тарифы</NuxtLink>
           </div>
           <div class="footer-menu__item">
             <div class="text-base">Условия использования</div>
-            <NuxtLink>Оферта для юр.лиц</NuxtLink>
-            <NuxtLink>Оферта для физ.лиц</NuxtLink>
-            <NuxtLink>Обработка персональных данных</NuxtLink>
+            <NuxtLink :to="ROUTES_NAMES.offer">Оферта для юр.лиц</NuxtLink>
+            <NuxtLink :to="ROUTES_NAMES.offer">Оферта для физ.лиц</NuxtLink>
+            <NuxtLink :to="ROUTES_NAMES.offer"
+              >Обработка персональных данных</NuxtLink
+            >
             <NuxtLink class="mt-auto">© 2021 ПроКлинику</NuxtLink>
           </div>
         </div>

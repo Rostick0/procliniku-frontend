@@ -3,7 +3,7 @@
     <div class="font-medium text-ui-2 mb-3">
       Лечебные учреждения города {{ city?.name }}
     </div>
-    <Search class="mb-6" v-model="seachQuery" />
+    <Search class="mb-6" v-model="searchQuery" />
     <ServiceCategoriesList
       class="mb-4"
       @makeServiceCategory=""
@@ -12,7 +12,7 @@
     <div class="font-medium text-ui-2 mb-3" id="titleClinics">
       Все учреждения
     </div>
-    <ClinicShortList class="mb-10" :clinics="clinics" />
+    <ClinicShortList class="mb-8" :clinics="clinics" />
     <UiPagination v-model="filters.page" :meta="metaClinic" />
   </div>
 </template>
@@ -60,14 +60,14 @@ watch(
   }
 );
 
-const seachQuery = ref();
+const searchQuery = ref();
 watch(
-  () => seachQuery.value,
+  () => searchQuery.value,
   debounce((cur) => (filters.value["filterLIKE[name]"] = cur), 500)
 );
 
 watch(
-  () => seachQuery.value,
+  () => searchQuery.value,
   () => (filters.value.page = 1)
 );
 
