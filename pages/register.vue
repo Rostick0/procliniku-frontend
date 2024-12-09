@@ -38,7 +38,6 @@ import { useForm } from "vee-validate";
 import api from "~/api";
 import type { EmailCodeType, IRegister } from "~/interfaces/models/User";
 import debounce from "lodash/debounce";
-import auth from "~/api/auth";
 
 const isSendedCode = ref<boolean>(false);
 const { register } = await useAuth();

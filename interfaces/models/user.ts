@@ -14,10 +14,18 @@ export interface IRegister {
   code: string | number;
 }
 
+enum UserRole {
+  admin = "admin",
+  owner = "owner",
+  client = "client",
+}
+
 export default interface IUser extends ITimestamps {
   id: number;
   name: string;
   email: string;
   phone: string;
   password: string;
+  birthdate: Date;
+  role: typeof UserRole;
 }

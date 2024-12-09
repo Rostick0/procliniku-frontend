@@ -2,7 +2,7 @@
   <div class="clinic-short bg-white shadow-md flex gap-x-4 px-3 py-4">
     <NuxtLink
       class="clinic-short__image flex shrink-0"
-      :to="`${ROUTES_NAMES.clinic}/clinic/${clinic?.link_name}`"
+      :to="`${ROUTES_NAMES.clinic}/${clinic?.link_name}`"
     >
       <img
         class=""
@@ -15,7 +15,7 @@
     <div class="">
       <NuxtLink
         class="block font-semibold mb-3"
-        :to="`${ROUTES_NAMES.clinic}/clinic/${clinic?.link_name}`"
+        :to="`${ROUTES_NAMES.clinic}/${clinic?.link_name}`"
         >{{ clinic?.name }}</NuxtLink
       >
       <div class="clinic__info flex flex-col gap-y-2">
