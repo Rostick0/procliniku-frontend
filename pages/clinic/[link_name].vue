@@ -1,8 +1,14 @@
 <template>
   <div class="px-8">
     <div class="clinic p-5 mt-5 shadow-md">
-      <div class="clinic__title font-semibold text-xl mb-3">
-        <span>{{ data?.name }}</span>
+      <div class="flex items-start gap-x-2">
+        <IconVerification v-if="data?.is_verification" />
+        <div class="clinic__title font-semibold text-xl mb-3">
+          <span>{{ data?.name }}</span>
+        </div>
+        <button class="flex ml-auto" @click="toggleFavorite">
+          <IconFavorite :fill="isFavorite ? 'red' : '#BBBEC0'" />
+        </button>
       </div>
       <div class="flex items-center gap-x-2 mb-3">
         <span>Поделиться</span>
@@ -53,16 +59,33 @@ const data = await api.clinics
   .showByLinkName({
     link_name: route.params?.link_name as string,
     params: {
-      extends: "clinic_phones",
+      extends: "clinic_phones,my_favorite",
     },
   })
   ?.then((res: { data?: IClinic }) => res?.data);
+
+const isFavorite = ref(!!data?.my_favorite);
 
 if (!data) {
   throw navigateTo("/404");
 }
 
-// const {data} = await useApi()
+const toggleFavorite = async () => {
+  const clinic_id = data?.id;
+
+  if (isFavorite.value) {
+    await api.favorites.delete({ clinic_id });
+    isFavorite.value = false;
+    return;
+  }
+
+  await api.favorites.create({
+    data: {
+      clinic_id,
+    },
+  });
+  isFavorite.value = true;
+};
 
 // const data = {
 //   id: 1,

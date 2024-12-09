@@ -3,6 +3,9 @@ import moment from "moment";
 export const isCurrentYear = (date: Date | number | string) =>
   new Date().getFullYear() === new Date(date).getFullYear();
 
+export const dateFormat = "YYYY-MM-DD";
+export const dateTimeFormat = `${dateFormat} HH:mm:ss`;
+
 export const dateTimeUsabilityFormat = (date: Date | number | string) =>
   moment(date).format("DD " + (isCurrentYear(date) ? "MMMM" : "MM YY"));
 

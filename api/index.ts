@@ -1,6 +1,8 @@
+import appointments from "./modules/appointments";
 import cities from "./modules/cities";
 import clinics from "./modules/clinics";
 import emailCode from "./modules/emailCode";
+import favorites from "./modules/favorites";
 import regions from "./modules/regions";
 import serviceCategories from "./modules/serviceCategories";
 import services from "./modules/services";
@@ -23,10 +25,12 @@ interface apiMethods {
 }
 
 const api = {
+  appointments,
   cities,
   clinics,
   regions,
   emailCode,
+  favorites,
   serviceCategories,
   services,
   users,

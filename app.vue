@@ -10,10 +10,20 @@
 
 <script lang="ts" setup>
 const { configure, defineRule } = await import("vee-validate");
-const { required, email, min, max,confirmed, size, image, min_value, max_value } =
-  await import("@vee-validate/rules");
+const {
+  required,
+  email,
+  min,
+  max,
+  confirmed,
+  size,
+  image,
+  min_value,
+  max_value,
+} = await import("@vee-validate/rules");
 const { localize } = await import("@vee-validate/i18n");
 await import("vue-toastification/dist/index.css");
+await import("moment/dist/locale/ru");
 
 // const route = useRoute();
 

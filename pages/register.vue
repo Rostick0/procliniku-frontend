@@ -107,12 +107,15 @@ watch(
   debounce(async (cur) => {
     if (cur?.length < 6) return;
 
-    const res = await register({
+    const resErrors = await register({
       ...valuesForm.value,
       code: cur,
     });
 
-    console.log(res);
+    if (resErrors) {
+      errorMessage.value = resErrors?.message;
+      isSendedCode.value = false;
+    }
   }, 300)
 );
 
