@@ -5,12 +5,21 @@
       {{ errorMessage }}
     </div>
     <div class="auth-form__fields mb-8">
-      <div class="mb-4">
-        <VFormComponent :field="email" />
-      </div>
-      <VFormComponent :field="password" />
+      <template v-if="!isSendedCode">
+        <div class="mb-4">
+          <VFormComponent :field="email" />
+        </div>
+        <VFormComponent :field="password" />
+      </template>
+      <template v-else>
+        <div class="mb-2">Введите код из почты {{ email.modelValue }}</div>
+        <VFormComponent :field="code" />
+      </template>
     </div>
-    <UiButton class="auth-form__btn p-2 justify-center w-full" bgColor="blue"
+    <UiButton
+      v-if="!isSendedCode"
+      class="auth-form__btn p-2 justify-center w-full"
+      bgColor="blue"
       >Продолжить</UiButton
     >
     <div class="text-center text-xs mt-4">
@@ -25,32 +34,35 @@
 <script lang="ts" setup>
 // import formLite from "vue-form-lite";
 // import { required, maxLength } from "@vue-form-lite/rules";
-import type { ILogin } from "~/interfaces/models/User";
+import { useForm } from "vee-validate";
+import api from "~/api";
+import type { EmailCodeType, IRegister } from "~/interfaces/models/User";
+import debounce from "lodash/debounce";
+import auth from "~/api/auth";
 
-// const { login } = await useAuth();
+const isSendedCode = ref<boolean>(false);
+const { register } = await useAuth();
 
-const state = ref<ILogin>({
-  login: "",
-  password: "",
-});
-
-// const { errors, handleSubmit, setErrors } = formLite({
-//   state,
-//   rules: {
-//     login: {
-//       required,
-//       maxLength: maxLength(255),
-//     },
-//     password: {
-//       required,
-//       maxLength: maxLength(255),
-//     },
-//   },
-// });
-
+const { handleSubmit } = useForm();
 const errorMessage = ref<string>();
 
-const onSubmit = () => {};
+const valuesForm = ref<IRegister>();
+
+const onSubmit = handleSubmit(async (values: IRegister) => {
+  const res = await api.emailCode.create({
+    data: {
+      email: values?.email,
+      type: "register",
+    },
+  });
+
+  if (res?.isError) {
+    return warningPopup("Код не отправлен");
+  }
+
+  valuesForm.value = values;
+  isSendedCode.value = true;
+});
 
 const email = ref({
   type: "text",
@@ -68,15 +80,42 @@ const email = ref({
 const password = ref({
   type: "text",
   name: "password",
-  rules: "required|max:255",
+  rules: "required|min:8|max:255",
   modelValue: "",
 
   bind: {
     label: "Пароль",
     placeholder: "Введите пароль",
-    type: "password",
+    type: "text",
   },
 });
+
+const code = ref({
+  type: "text",
+  name: "code",
+  rules: "required|min:6|max:6",
+  modelValue: "",
+
+  bind: {
+    label: "Код",
+    placeholder: "Введите код",
+    maska: "######",
+  },
+});
+
+watch(
+  () => code.value.modelValue,
+  debounce(async (cur) => {
+    if (cur?.length < 6) return;
+
+    const res = await register({
+      ...valuesForm.value,
+      code: cur,
+    });
+
+    console.log(res);
+  }, 300)
+);
 
 // const onSubmit = handleSubmit(async (values: ILogin) => {
 //   const resErrors = await login(values);

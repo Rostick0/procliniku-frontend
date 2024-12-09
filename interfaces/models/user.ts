@@ -1,13 +1,17 @@
 import type ITimestamps from "../Timestamps";
 
 export interface ILogin {
-  login: string;
+  email: string;
   password: string;
 }
 
+// "login" |
+export type EmailCodeType = "register" | "update_email";
+
 export interface IRegister {
-  login: string;
+  email: string;
   password: string;
+  code: string | number;
 }
 
 export default interface IUser extends ITimestamps {

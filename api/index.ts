@@ -1,5 +1,6 @@
 import cities from "./modules/cities";
 import clinics from "./modules/clinics";
+import emailCode from "./modules/emailCode";
 import regions from "./modules/regions";
 import serviceCategories from "./modules/serviceCategories";
 import services from "./modules/services";
@@ -25,6 +26,7 @@ const api = {
   cities,
   clinics,
   regions,
+  emailCode,
   serviceCategories,
   services,
   users,
