@@ -25,7 +25,7 @@
             <NuxtLink :to="ROUTES_NAMES.about">О сервисе</NuxtLink>
             <NuxtLink :to="ROUTES_NAMES.regions">Регионы</NuxtLink>
             <NuxtLink :to="ROUTES_NAMES.cities">Города</NuxtLink>
-            <NuxtLink>Соцсети</NuxtLink>
+            <span @click="openSocial" role="button">Соцсети</span>
             <NuxtLink>Тарифы</NuxtLink>
           </div>
           <div class="footer-menu__item">
@@ -117,6 +117,41 @@
       </div>
     </UiModalInner>
   </LazyUiModal>
+
+  <LazyUiModal :name="nameModalSocial">
+    <UiModalInner class="py-16 px-4">
+      <div class="flex flex-col items-start gap-y-5">
+        <a
+          class="flex items-center gap-x-2"
+          :href="`https://t.me/procliniku`"
+          @click="closeSocial"
+          target="_blank"
+        >
+          <IconTg
+            class="shrink-0"
+            fill="var(--ui-color)"
+            width="18"
+            height="18"
+          />
+          <span class="underline">https://t.me/procliniku</span>
+        </a>
+        <a
+          class="flex items-center gap-x-2"
+          :href="`https://vk.com/procliniku`"
+          @click="closeSocial"
+          target="_blank"
+        >
+          <IconVk
+            class="shrink-0"
+            fill="var(--ui-color)"
+            width="18"
+            height="18"
+          />
+          <span class="underline">https://vk.com/procliniku</span>
+        </a>
+      </div>
+    </UiModalInner>
+  </LazyUiModal>
 </template>
 
 <script lang="ts" setup>
@@ -125,6 +160,11 @@ const { open: openContacts } = useModal({ name: nameModalContacts });
 
 const nameModalMenu = "modal-menu";
 const { open: openMenu, close: closeMenu } = useModal({ name: nameModalMenu });
+
+const nameModalSocial = "modal-social";
+const { open: openSocial, close: closeSocial } = useModal({
+  name: nameModalSocial,
+});
 </script>
 
 <style lang="scss" scoped>
