@@ -1,0 +1,19 @@
+{
+  "name": "ПроКлинику",
+  "short_name": "ПроКлинику",
+  "description": "ПроКлинику - Приложение для поиска клиник",
+  "icons": [
+    {
+      "src": "/favicons/icon-72x72.png",
+      "type": "image/png",
+      "sizes": "72x72",
+      "purpose": "any maskable"
+    }
+  ],
+  "scope": "/",
+  "start_url": "/?",
+  "display": "standalone",
+  "theme_color": "#e5e7eb",
+  "background_color": "#e5e7eb",
+  "lang": "ru-RU"
+}
