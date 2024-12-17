@@ -98,6 +98,15 @@ const toggleFavorite = async () => {
 //   description:
 //     'В медицинском центре "Ультрамед+" можно пройти все виды УЗИ пациентам любого возраста. В современном оборудованном центре принимают специалисты различного профиля, все высшей категории. К вашим услугам акушер-гинеколог, маммолог-онколог, терапевт-гастроэнтеролог, эндокринолог и гематолог. ',
 // } as IClinic;
+
+const title = data?.name;
+const description = data?.description;
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+});
 </script>
 
 <style lang="scss" scoped>

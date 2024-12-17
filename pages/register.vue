@@ -127,7 +127,7 @@ watch(
 // });
 
 useHead({
-  title: "Вход",
+  title: "Регистрация в сервис",
 });
 
 definePageMeta({

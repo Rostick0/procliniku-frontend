@@ -36,4 +36,13 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const title = `О нас`;
+const description = "Поможем вам найти подходящую - клинику именно для вас";
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+});
+</script>

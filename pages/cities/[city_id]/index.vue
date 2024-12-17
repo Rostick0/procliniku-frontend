@@ -84,4 +84,13 @@ const {
   },
 });
 await getClinics();
+
+const title = computed(() => `${city?.name} | Поиск клиники по городу - ${city?.name}`);
+const description = "Поможем вам найти подходящую - клинику именно для вас";
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+});
 </script>

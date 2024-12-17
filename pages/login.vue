@@ -64,7 +64,7 @@ const onSubmit = handleSubmit(async (values: ILogin) => {
 });
 
 useHead({
-  title: "Вход",
+  title: "Вход в аккаунт",
 });
 
 definePageMeta({

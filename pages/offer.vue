@@ -414,4 +414,13 @@
 
 <script lang="ts" setup>
 const requestUrl = useRequestURL();
+
+const title = `Оферта`;
+const description = "Поможем вам найти подходящую - клинику именно для вас";
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+});
 </script>

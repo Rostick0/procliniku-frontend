@@ -37,6 +37,15 @@ const { data, get } = await useApi<IClinic[]>({
   filters,
 });
 await get();
+
+const title = "Проклинику | поиск лучшей клиники";
+const description = "Поможем вам найти подходящую - клинику именно для вас";
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+});
 </script>
 
 <style lang="scss" scoped></style>
