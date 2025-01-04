@@ -26,7 +26,7 @@
 import { useForm } from "vee-validate";
 import type { ILogin } from "~/interfaces/models/User";
 
-const { handleSubmit } = useForm();
+const { handleSubmit } = useForm<ILogin>();
 const { login } = await useAuth();
 
 const errorMessage = ref<string>();
@@ -57,7 +57,7 @@ const password = ref({
   },
 });
 
-const onSubmit = handleSubmit(async (values: ILogin) => {
+const onSubmit = handleSubmit(async (values) => {
   const resErrors = await login(values);
 
   errorMessage.value = resErrors?.message;

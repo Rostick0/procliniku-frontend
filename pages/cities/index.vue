@@ -1,7 +1,7 @@
 <template>
   <div class="px-8">
-    <Search class="mb-6" v-model="searchQuery" />
-    <div class="font-medium text-ui-2 mb-3">Регионы</div>
+    <Search class="mb-6" placeholder="Поиск города" v-model="searchQuery" />
+    <div class="font-medium text-ui-2 mb-3">Города</div>
     <div class="flex flex-col gap-y-3 mb-8" v-if="regions?.length">
       <NuxtLink
         class="underline decoration-dotted"

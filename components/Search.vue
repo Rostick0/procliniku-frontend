@@ -8,7 +8,7 @@
       </UiButton>
       <UiField
         class="search__input"
-        placeholder="Найти клинику, услугу"
+        :placeholder="placeholder ?? 'Найти клинику, услугу'"
         :modelValue="modelValue"
         @update:modelValue="(val) => emits('update:modelValue', val)"
       />
@@ -19,6 +19,7 @@
 <script lang="ts" setup>
 interface IProps {
   modelValue: string;
+  placeholder?: string;
 }
 
 const props = defineProps<IProps>();

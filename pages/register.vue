@@ -34,7 +34,7 @@
 <script lang="ts" setup>
 // import formLite from "vue-form-lite";
 // import { required, maxLength } from "@vue-form-lite/rules";
-import { useForm } from "vee-validate";
+import { useForm, type GenericObject } from "vee-validate";
 import api from "~/api";
 import type { EmailCodeType, IRegister } from "~/interfaces/models/User";
 import debounce from "lodash/debounce";
@@ -42,12 +42,12 @@ import debounce from "lodash/debounce";
 const isSendedCode = ref<boolean>(false);
 const { register } = await useAuth();
 
-const { handleSubmit } = useForm();
+const { handleSubmit } = useForm<IRegister>();
 const errorMessage = ref<string>();
 
 const valuesForm = ref<IRegister>();
 
-const onSubmit = handleSubmit(async (values: IRegister) => {
+const onSubmit = handleSubmit(async (values) => {
   const res = await api.emailCode.create({
     data: {
       email: values?.email,
