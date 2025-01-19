@@ -6,7 +6,6 @@
       диагностики.
     </div>
     <ClinicList :clinics="data" />
-    <!-- <UiButton>312</UiButton> -->
   </div>
 </template>
 

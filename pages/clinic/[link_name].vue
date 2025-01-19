@@ -52,7 +52,6 @@ import api from "~/api";
 import type IClinic from "~/interfaces/models/Clinic";
 
 const route = useRoute();
-
 const requestUrl = useRequestURL();
 
 const data = await api.clinics
@@ -86,18 +85,6 @@ const toggleFavorite = async () => {
   });
   isFavorite.value = true;
 };
-
-// const data = {
-//   id: 1,
-//   name: "ABOBA",
-//   address: "800 летие москвы",
-//   rating: 4,
-//   longitude: 55.55,
-//   latitude: 37.3736,
-//   owner_id: 1,
-//   description:
-//     'В медицинском центре "Ультрамед+" можно пройти все виды УЗИ пациентам любого возраста. В современном оборудованном центре принимают специалисты различного профиля, все высшей категории. К вашим услугам акушер-гинеколог, маммолог-онколог, терапевт-гастроэнтеролог, эндокринолог и гематолог. ',
-// } as IClinic;
 
 const title = data?.name;
 const description = data?.description;
