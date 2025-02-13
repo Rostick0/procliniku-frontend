@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 interface IProps {
-  modelValue: string;
+  modelValue?: string;
   placeholder?: string;
 }
 

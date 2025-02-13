@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 
   css: ["~/assets/scss/index.scss"],
 
-  modules: ["@nuxtjs/tailwindcss", "@vite-pwa/nuxt"],
+  modules: ["@nuxtjs/ionic", "@nuxtjs/tailwindcss", "@vite-pwa/nuxt"],
 
   runtimeConfig: {
     public: {
@@ -57,4 +57,6 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
+
+  ssr: false,
 });

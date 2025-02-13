@@ -7,9 +7,19 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "ionic:build": "npm run generate",
+    "ionic:serve": "npm run dev"
   },
   "dependencies": {
+    "@capacitor/android": "7.0.1",
+    "@capacitor/app": "7.0.0",
+    "@capacitor/cli": "7.0.1",
+    "@capacitor/core": "7.0.1",
+    "@capacitor/haptics": "7.0.0",
+    "@capacitor/keyboard": "7.0.0",
+    "@capacitor/status-bar": "7.0.0",
+    "@nuxtjs/ionic": "^0.15.1",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@vee-validate/i18n": "^4.14.7",
     "@vee-validate/rules": "^4.14.7",
@@ -28,5 +38,6 @@
   "devDependencies": {
     "@types/lodash": "^4.17.13",
     "sass": "^1.82.0"
-  }
+  },
+  "version": "0.0.0"
 }
