@@ -4,8 +4,9 @@
 */
 
 import Toast, { useToast } from "vue-toastification";
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(async (nuxtApp) => {
   nuxtApp.vueApp.use(Toast);
+  await import("vue-toastification/dist/index.css");
 
   return {
     provide: {

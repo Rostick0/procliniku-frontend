@@ -1,5 +1,6 @@
 import type ITimestamps from "../Timestamps";
 import type ICategory from "./Category";
+import type ICity from "./City";
 import type IClinicCategory from "./ClinicCategory";
 import type IClinicPhone from "./ClinicPhone";
 import type IFavorite from "./Favorite";
@@ -18,6 +19,7 @@ export default interface IClinic extends ITimestamps {
   owner_id: number;
   main_category: ICategory;
   clinic_categories?: IClinicCategory[];
+  city?: ICity;
   clinic_phones?: IClinicPhone[];
   my_favorite?: IFavorite;
 }

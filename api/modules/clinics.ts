@@ -1,14 +1,26 @@
+import type IClinic from "~/interfaces/models/Clinic";
 import useFetcher from "../../utils/fetch";
 import type { apiMethods } from "../index";
 
-export interface IClinicsMethods extends apiMethods {
+export interface IClinicsMethods {
+  get: ({
+    id,
+    params,
+  }: {
+    id: number | string;
+    params?: any;
+  }) => Promise<{ data: IClinic }>;
   showByLinkName: ({
     link_name,
     params,
   }: {
     link_name: string;
     params?: any;
-  }) => Promise<any>;
+  }) => Promise<{ data: IClinic }>;
+  getAll: (
+    { params }: { params: any },
+    header?: any
+  ) => Promise<{ data: IClinic[] }>;
 }
 
 export default <IClinicsMethods>{
@@ -20,5 +32,5 @@ export default <IClinicsMethods>{
   //   useFetcher().patch(`/clinics/${id}`, data, params),
   getAll: async ({ params }, headers?: any) =>
     useFetcher().get(`/clinics`, params, headers),
-  create: async ({ data }) => useFetcher().post(`/clinics`, data),
+  // create: async ({ data }) => useFetcher().post(`/clinics`, data),
 };

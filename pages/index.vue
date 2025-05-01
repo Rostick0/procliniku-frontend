@@ -1,11 +1,11 @@
 <template>
   <div class="px-8">
-    <Search v-model="searchQuery" />
+    <!-- <Search v-model="searchQuery" />
     <div class="text-xs mt-6 mb-8">
       ПроКлинику - Ваш надежный помощник в мире медицинских услуг, лечения и
       диагностики.
     </div>
-    <ClinicList :clinics="data" />
+    <ClinicList :clinics="data" /> -->
   </div>
 </template>
 
