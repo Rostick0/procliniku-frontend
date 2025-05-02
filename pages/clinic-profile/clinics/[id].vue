@@ -46,10 +46,11 @@ const user = useState<IUser>("user");
 const clinic = await api.clinics
   .get({
     id: route.params.id.toString(),
-    // params: {
-    //   "filterEQ[owner_id]": user.value?.id,
-    //   extends: "city",
-    // },
+    params: {
+      extends: "clinic_phones,clinic_categories.category,images.image",
+      //   "filterEQ[owner_id]": user.value?.id,
+      //   extends: "city",
+    },
   })
   ?.then((res) => res?.data);
 

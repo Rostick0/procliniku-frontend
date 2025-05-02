@@ -44,7 +44,7 @@ const clinics = await api.clinics
   .getAll({
     params: {
       "filterEQ[owner_id]": user.value?.id,
-      // extends: 'city'
+      extends: "city",
     },
   })
   ?.then((res) => res?.data);

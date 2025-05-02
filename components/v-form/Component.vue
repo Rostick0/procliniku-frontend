@@ -26,7 +26,7 @@
     >
       <slot />
     </UiCheckbox>
-    <UiMultiMSelect
+    <VFormMultiMSelect
       v-else-if="field.type == 'multiple-select'"
       v-model="model"
       v-bind="field.bind"
@@ -54,7 +54,7 @@
       :error-message="errorMessage"
     />
 
-    <UiMPhotoLoader
+    <VFormMPhotoLoader
       v-else-if="field.type == 'multiple-photo-loader'"
       v-model="model"
       v-bind="field.bind"

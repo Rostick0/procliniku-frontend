@@ -29,19 +29,19 @@
         </div>
       </div>
       <div class="grid gap-y-6 mb-4">
-        <ProfileInfo
+        <ProfileInfoWithList
           :count="favorites?.total"
           title="Любимые клиники"
           :link="ROUTES_NAMES.profile_favorites"
           :list="favoirtesData"
         />
-        <ProfileInfo
+        <ProfileInfoWithList
           :count="appointmentFuture?.total"
           title="Будущие записи"
           :link="ROUTES_NAMES.profile_appointment_future"
           :list="appointmentFutureData"
         />
-        <ProfileInfo
+        <ProfileInfoWithList
           :count="appointmentPast?.total"
           title="Посещения"
           :link="ROUTES_NAMES.profile_appointment_past"

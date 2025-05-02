@@ -9,6 +9,8 @@ export const ROUTES_NAMES = {
   clinic_profile: "/clinic-profile",
   clinic_profile_clinics: "/clinic-profile/clinics",
   clinic_profile_clinics_id: (id: number) => `/clinic-profile/clinics/${id}`,
+  clinic_profile_cnc: "/clinic-profile/cnc",
+  clinic_profile_legal_entity: "/clinic-profile/legal_entity",
   about: "/about",
   main: "/",
   login: "/login",

@@ -4,6 +4,7 @@ import type ICity from "./City";
 import type IClinicCategory from "./ClinicCategory";
 import type IClinicPhone from "./ClinicPhone";
 import type IFavorite from "./Favorite";
+import type IImageRelat from "./ImageRelat";
 
 export default interface IClinic extends ITimestamps {
   id: number;
@@ -21,5 +22,6 @@ export default interface IClinic extends ITimestamps {
   clinic_categories?: IClinicCategory[];
   city?: ICity;
   clinic_phones?: IClinicPhone[];
+  images?: IImageRelat[];
   my_favorite?: IFavorite;
 }

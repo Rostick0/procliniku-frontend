@@ -17,6 +17,7 @@
     "@capacitor/haptics": "7.0.0",
     "@capacitor/keyboard": "7.0.0",
     "@capacitor/status-bar": "7.0.0",
+    "@nuxt/image": "^1.10.0",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@vee-validate/i18n": "^4.14.7",
     "@vee-validate/rules": "^4.14.7",

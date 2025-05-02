@@ -2,12 +2,15 @@
   <form class="">
     {{ clinic }}
     <ClinicMutationStep1 v-if="step === 1" :clinic="clinic" />
-    <ClinicMutationStep1 v-else-if="step === 2" :clinic="clinic" />
+    <ClinicMutationStep2 v-else-if="step === 2" :clinic="clinic" />
+    <ClinicMutationStep3 v-else-if="step === 3" :clinic="clinic" />
+    <ClinicMutationStep4 v-else-if="step === 4" :clinic="clinic" />
   </form>
   <div class="flex">
     <UiButton
-      v-for="indx in [1, 2, 3, 4, 5]"
+      v-for="indx in arraySteps"
       class=""
+      @click="step = indx"
       :bgColor="indx === step ? null : 'grey'"
     ></UiButton>
   </div>
@@ -21,7 +24,9 @@ interface IProps {
   clinic?: IClinic;
 }
 
-const step = ref<1 | 2 | 3 | 4 | 5>(1);
+type step = 1 | 2 | 3 | 4 | 5;
+const arraySteps: step[] = [1, 2, 3, 4, 5];
+const step = ref<step>(1);
 
 const props = defineProps<IProps>();
 

@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 
   css: ["~/assets/scss/index.scss"],
 
-  modules: ["@nuxtjs/tailwindcss", "@vite-pwa/nuxt"],
+  modules: ["@nuxtjs/tailwindcss", "@vite-pwa/nuxt", "@nuxt/image"],
 
   runtimeConfig: {
     public: {
