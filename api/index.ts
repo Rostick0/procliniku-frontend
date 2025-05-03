@@ -1,4 +1,5 @@
 import appointments from "./modules/appointments";
+import articles from "./modules/articles";
 import categories from "./modules/categories";
 import cities from "./modules/cities";
 import clinics from "./modules/clinics";
@@ -28,6 +29,7 @@ interface apiMethods {
 
 const api = {
   appointments,
+  articles,
   categories,
   cities,
   clinics,

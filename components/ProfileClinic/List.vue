@@ -1,5 +1,5 @@
 <template>
-  <table class="w-full">
+  <table class="mt-6 w-full">
     <thead>
       <tr class="text-left">
         <th class="border-color-ui border-b-2 pr-2">Город</th>
@@ -27,7 +27,7 @@
 import type IClinic from "~/interfaces/models/Clinic";
 
 interface IProps {
-  clinics: IClinic[] | [];
+  clinics?: IClinic[] | [];
 }
 
 const props = defineProps<IProps>();

@@ -4,9 +4,17 @@
       <ProfileTop />
       <ProfileBack
         :to="ROUTES_NAMES.clinic_profile_clinics_id(+$route.params.id)"
-        >Назад</ProfileBack
+        >Статьи</ProfileBack
       >
-      <ProfileClinicList :clinics="clinics" />
+      <NuxtLink
+        class="block w-fit"
+        :to="
+          ROUTES_NAMES.clinic_profile_clinics_articles_add(+$route.params.id)
+        "
+      >
+        <UiButton>Добавить</UiButton>
+      </NuxtLink>
+      <ProfileArticleList :articles="articles" />
       <div class="flex gap-x-2 items-center justify-center">
         <IconMap width="18" height="18" />
         <span>Уфа</span>
@@ -20,12 +28,13 @@ import api from "~/api";
 import type IUser from "~/interfaces/models/User";
 
 const user = useState<IUser>("user");
+const route = useRoute();
 
-const clinics = await api.clinics
+const articles = await api.articles
   .getAll({
     params: {
-      "filterEQ[owner_id]": user.value?.id,
-      extends: "city",
+      "filterEQ[clinic_id]": route.params.id,
+      // extends: "city",
     },
   })
   ?.then((res) => res?.data);

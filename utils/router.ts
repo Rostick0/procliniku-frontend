@@ -19,10 +19,11 @@ export const ROUTES_NAMES = {
     `/clinic-profile/clinics/${id}/tags`,
   clinic_profile_clinics_articles: (id: number) =>
     `/clinic-profile/clinics/${id}/articles`,
+  clinic_profile_clinics_articles_add: (id: number) =>
+    `/clinic-profile/clinics/${id}/articles/add`,
   clinic_profile_clinics_workers: (id: number) =>
     `/clinic-profile/clinics/${id}/workers`,
   clinic_profile_cnc: "/clinic-profile/cnc",
-  clinic_profile_settings: "/clinic-profile/settings",
   clinic_profile_help: "/clinic-profile/help",
   clinic_profile_legal_entity: "/clinic-profile/legal_entity",
   about: "/about",
