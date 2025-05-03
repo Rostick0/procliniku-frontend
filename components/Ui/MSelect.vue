@@ -177,7 +177,7 @@ const handleScroll = (event: any) => {
   }
 
   &__value {
-    background-color: white;
+    background-color: #f5f5f5;
     border-radius: 0.5rem;
     font-size: 1rem;
     white-space: nowrap;
@@ -195,12 +195,12 @@ const handleScroll = (event: any) => {
       transition: 0.3s;
 
       &:hover {
-        background-color: rgb(56, 189, 248);
+        background-color: var(--ui-color);
         color: white;
       }
 
       &.selected {
-        background-color: black;
+        background-color: var(--ui-color-2);
         color: white;
       }
     }
@@ -211,9 +211,9 @@ const handleScroll = (event: any) => {
   }
 
   &__options {
-    background-color: white;
+    background-color: #f5f5f5;
     border-radius: 0.5rem;
-    border: 1px solid;
+    // border: 1px solid;
     box-shadow: 0 1px 2px rgba(50, 50, 71, 0.08);
     position: absolute;
     top: 108%;

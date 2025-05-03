@@ -17,6 +17,7 @@
       </span>
     </label>
     <template v-for="item in modelValue" :key="item.id">
+      <!-- {{ item?.path }} -->
       <div>
         <div @mousedown="dragElem = item">
           <UiDraggable>
@@ -40,8 +41,8 @@
                   :src="item?.path"
                   alt="Error"
                   loading="lazy"
-                  width="154"
-                  height="96"
+                  width="120"
+                  height="75"
                 />
               </div>
             </template>
@@ -50,7 +51,7 @@
                 class="photoloader__img_drag"
                 :src="item?.path"
                 alt="Error"
-                width="154"
+                width="120"
                 height="99"
               />
             </template>
@@ -142,8 +143,8 @@ const handleRemove = (item) => {
     flex-shrink: 0;
     position: relative;
     transition: 0.3s;
-    width: 154px;
-    height: 96px;
+    width: 120px;
+    height: 75px;
 
     &_content {
       display: flex;
@@ -176,15 +177,15 @@ const handleRemove = (item) => {
 
   &__images {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 154px);
-    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fit, 120px);
+    grid-gap: 8px;
     width: 100%;
   }
 
   &__image {
     position: relative;
-    width: 154px;
-    height: 96px;
+    width: 120px;
+    height: 75px;
 
     &_delete {
       background-color: white;
@@ -222,8 +223,8 @@ const handleRemove = (item) => {
     &_drag {
       border-radius: 8px;
       object-fit: cover;
-      width: 154px;
-      height: 96px;
+      width: 120px;
+      height: 75px;
       z-index: 10;
     }
   }

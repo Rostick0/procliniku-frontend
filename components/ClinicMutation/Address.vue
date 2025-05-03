@@ -26,7 +26,7 @@ const address = ref({
 
 const phone = ref({
   type: "text",
-  name: "phone.0",
+  name: "clinic_phones.0",
   rules: "required|max:255",
   modelValue: props.clinic?.clinic_phones?.[0]?.phone ?? "",
 
@@ -38,8 +38,8 @@ const phone = ref({
 
 const additional_phone = ref({
   type: "text",
-  name: "phone.1",
-  rules: "required|max:255",
+  name: "clinic_phones.1",
+  rules: "max:255",
   modelValue: props.clinic?.clinic_phones?.[1]?.phone ?? "",
 
   bind: {

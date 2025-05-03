@@ -1,5 +1,5 @@
 <template>
-  <input
+  <textarea
     class="control__field p-3"
     :class="size"
     :="$attrs"
@@ -9,8 +9,8 @@
     :data-maska-reversed="dataMaskaReversed"
     @change="handleChange"
     @input="handleInput"
-    :value="modelValue"
-  />
+    >{{ modelValue }}</textarea
+  >
 </template>
 
 <script setup>

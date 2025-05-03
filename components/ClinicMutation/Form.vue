@@ -1,39 +1,64 @@
 <template>
-  <form class="">
-    {{ clinic }}
-    <ClinicMutationStep1 v-if="step === 1" :clinic="clinic" />
-    <ClinicMutationStep2 v-else-if="step === 2" :clinic="clinic" />
-    <ClinicMutationStep3 v-else-if="step === 3" :clinic="clinic" />
-    <ClinicMutationStep4 v-else-if="step === 4" :clinic="clinic" />
+  <form class="" @submit="onSubmut">
+    <div class="flex flex-col gap-y-2">
+      <slot />
+    </div>
+    <div class="mt-6 ml-auto w-fit">
+      <UiButton class="">Сохранить</UiButton>
+    </div>
   </form>
-  <div class="flex">
-    <UiButton
-      v-for="indx in arraySteps"
-      class=""
-      @click="step = indx"
-      :bgColor="indx === step ? null : 'grey'"
-    ></UiButton>
-  </div>
 </template>
 
 <script lang="ts" setup>
 import { useForm } from "vee-validate";
+import api from "~/api";
+import type ICategory from "~/interfaces/models/Category";
 import type IClinic from "~/interfaces/models/Clinic";
+import type IService from "~/interfaces/models/Service";
 
 interface IProps {
   clinic?: IClinic;
 }
-
-type step = 1 | 2 | 3 | 4 | 5;
-const arraySteps: step[] = [1, 2, 3, 4, 5];
-const step = ref<step>(1);
-
 const props = defineProps<IProps>();
 
-const { handleSubmit } = useForm();
+const route = useRoute();
 
-const onSubmut = handleSubmit((values) => {
-  console.log(values);
-  //   if (step.value < 5) return (step.value += 1);
+type step = 1 | 2 | 3 | 4;
+const step = ref<step>(1);
+
+const { handleSubmit, setErrors } = useForm();
+
+const onSubmut = handleSubmit(async (values) => {
+  const data = values;
+  // console.log(values);
+  if (data?.clinic_phones) data.clinic_phones = data.clinic_phones.join(",");
+  if (data?.images) {
+    const { getImageIdsFrom } = useImages();
+
+    const images = await getImageIdsFrom(values?.images);
+    data.images = images;
+  }
+
+  if (data?.clinic_categories)
+    data.clinic_categories = data.clinic_categories
+      .map((item: ICategory) => item.id)
+      .join(",");
+
+  if (data?.clinic_services)
+    data.clinic_services = data.clinic_services
+      .map((item: IService) => item.id)
+      .join(",");
+  // console.log(data);
+  // return;
+
+  const res = await api.clinics.update({
+    id: route.params.id.toString(),
+    data,
+  });
+
+  if (res?.error) {
+    setErrors(res?.errorResponse);
+    return;
+  }
 });
 </script>

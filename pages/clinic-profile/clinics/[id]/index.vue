@@ -17,24 +17,37 @@
 </template>
 
 <script lang="ts" setup>
-import moment from "moment";
-import api from "~/api";
 import type IUser from "~/interfaces/models/User";
 
 const user = useState<IUser>("user");
 
+const route = useRoute();
+const id = +route.params.id;
+
 const menu = [
   {
-    name: "Клиники",
-    link: ROUTES_NAMES.clinic_profile_clinics,
+    name: "Общая информация",
+    link: ROUTES_NAMES.clinic_profile_clinics_info(id),
   },
   {
-    name: "Юрлица",
-    link: ROUTES_NAMES.clinic_profile_legal_entity,
+    name: "Адреса",
+    link: ROUTES_NAMES.clinic_profile_clinics_address(id),
+  },
+  {
+    name: "Фотогалерея",
+    link: ROUTES_NAMES.clinic_profile_clinics_images(id),
+  },
+  {
+    name: "Теги",
+    link: ROUTES_NAMES.clinic_profile_clinics_tags(id),
+  },
+  {
+    name: "Статьи",
+    link: ROUTES_NAMES.clinic_profile_clinics_articles(id),
   },
   {
     name: "Сотрудники",
-    link: ROUTES_NAMES.clinic_profile_legal_entity,
+    link: ROUTES_NAMES.clinic_profile_clinics_workers(id),
   },
 ];
 

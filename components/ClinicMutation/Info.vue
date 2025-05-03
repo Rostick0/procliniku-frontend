@@ -1,4 +1,5 @@
 <template>
+  {{ clinic }}
   <VFormComponent :field="description" />
   <VFormComponent :field="link" />
 </template>
@@ -13,14 +14,13 @@ interface IProps {
 const props = defineProps<IProps>();
 
 const description = ref({
-  type: "text",
+  type: "textarea",
   name: "description",
   rules: "required|max:255",
   modelValue: props.clinic?.description ?? "",
 
   bind: {
-    label: "Ссылка",
-    type: "url",
+    label: "Описание",
   },
 });
 

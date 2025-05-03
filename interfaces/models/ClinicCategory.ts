@@ -1,5 +1,5 @@
 import type ICategory from "./Category";
-import type IClinic from "./clinic";
+import type IClinic from "./Clinic";
 
 export default interface IClinicCategory {
   id: number;

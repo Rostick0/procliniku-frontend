@@ -12,7 +12,7 @@
       v-bind="field.bind"
       :error-message="errorMessage"
     />
-    <UiTextarea
+    <VFormTextarea
       v-else-if="field.type == 'textarea'"
       v-model="model"
       v-bind="field.bind"

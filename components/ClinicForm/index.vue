@@ -2,12 +2,16 @@
   <div class="p-2">
     <div class="profile shadow-md p-3">
       <ProfileTop />
-      <ProfileBack :to="ROUTES_NAMES.clinic_profile_cnc">Настройки</ProfileBack>
-      <div class="grid gap-y-6 mt-6 mb-4">
-        <NuxtLink v-for="item in menu" :key="item.name" :to="item.link">
-          <UiButton class="py-3">{{ item.name }}</UiButton>
-        </NuxtLink>
+      <ProfileBack
+        :to="ROUTES_NAMES.clinic_profile_clinics_id(+$route.params.id)"
+        >Назад</ProfileBack
+      >
+      <div class="mt-6">
+        <ClinicMutationForm :clinic="clinic">
+          <slot :clinic="clinic" />
+        </ClinicMutationForm>
       </div>
+
       <div class="flex gap-x-2 items-center justify-center">
         <IconMap width="18" height="18" />
         <span>Уфа</span>
@@ -17,26 +21,23 @@
 </template>
 
 <script lang="ts" setup>
-import moment from "moment";
 import api from "~/api";
 import type IUser from "~/interfaces/models/User";
+const route = useRoute();
 
 const user = useState<IUser>("user");
 
-const menu = [
-  {
-    name: "Клиники",
-    link: ROUTES_NAMES.clinic_profile_clinics,
-  },
-  {
-    name: "Юрлица",
-    link: ROUTES_NAMES.clinic_profile_legal_entity,
-  },
-  {
-    name: "Сотрудники",
-    link: ROUTES_NAMES.clinic_profile_legal_entity,
-  },
-];
+const clinic = await api.clinics
+  .get({
+    id: route.params.id.toString(),
+    params: {
+      extends:
+        "clinic_phones,clinic_categories.category,clinic_services.service,images.image",
+      //   "filterEQ[owner_id]": user.value?.id,
+      //   extends: "city",
+    },
+  })
+  ?.then((res) => res?.data);
 
 definePageMeta({
   middleware: ["auth"],
