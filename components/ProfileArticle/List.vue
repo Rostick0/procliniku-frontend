@@ -11,15 +11,19 @@
     <tbody>
       <tr v-for="article in articles" :key="article.id">
         <td class="pr-4">
-          {{ article?.created_at }}
+          {{ moment(article?.created_at).format('DD.MM.Y') }}
         </td>
         <td class="py-2 w-full">
           <div class="flex items-center gap-x-2">
-            {{ article?.title }}
-            <!-- <NuxtLink :to="ROUTES_NAMES.clinic_profile_clinics_id(clinic.id)">
-            <UiButton>{{ clinic?.name }}</UiButton>
-          </NuxtLink> -->
-            <NuxtLink>
+            <div class="grow">{{ article?.title }}</div>
+            <NuxtLink
+              :to="
+                ROUTES_NAMES.clinic_profile_clinics_articles_edit(
+                  +$route.params.id,
+                  article.id
+                )
+              "
+            >
               <svg
                 width="15"
                 height="15"
@@ -77,6 +81,7 @@
 </template>
 
 <script lang="ts" setup>
+import moment from "moment";
 import type IArticle from "~/interfaces/models/Article";
 
 interface IProps {

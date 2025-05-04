@@ -20,7 +20,12 @@
         <div class="">
           <UiButton class="px-3" @click="$router.back()">Назад</UiButton>
         </div>
-        <a class="" href="https://procliniku.ru/" target="_blank" external>
+        <a
+          class=""
+          href="https://procliniku.ru/ufa/add/"
+          target="_blank"
+          external
+        >
           <UiButton class="px-3">Перейти на сайт</UiButton>
         </a>
       </div>

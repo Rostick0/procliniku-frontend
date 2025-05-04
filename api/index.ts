@@ -3,6 +3,7 @@ import articles from "./modules/articles";
 import categories from "./modules/categories";
 import cities from "./modules/cities";
 import clinics from "./modules/clinics";
+import clinicWorker from "./modules/clinicWorker";
 import emailCode from "./modules/emailCode";
 import favorites from "./modules/favorites";
 import images from "./modules/images";
@@ -33,6 +34,7 @@ const api = {
   categories,
   cities,
   clinics,
+  clinicWorker,
   regions,
   emailCode,
   favorites,

@@ -21,6 +21,8 @@ export const ROUTES_NAMES = {
     `/clinic-profile/clinics/${id}/articles`,
   clinic_profile_clinics_articles_add: (id: number) =>
     `/clinic-profile/clinics/${id}/articles/add`,
+  clinic_profile_clinics_articles_edit: (id: number, article_id: number) =>
+    `/clinic-profile/clinics/${id}/articles/${article_id}`,
   clinic_profile_clinics_workers: (id: number) =>
     `/clinic-profile/clinics/${id}/workers`,
   clinic_profile_cnc: "/clinic-profile/cnc",

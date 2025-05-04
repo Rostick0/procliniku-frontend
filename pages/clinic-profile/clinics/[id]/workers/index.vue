@@ -3,13 +3,18 @@
     <div class="profile shadow-md p-3">
       <ProfileTop />
       <ProfileBack
-        :to="ROUTES_NAMES.clinic_profile_clinics_articles(+$route.params.id)"
-        >Назад</ProfileBack
+        :to="ROUTES_NAMES.clinic_profile_clinics_id(+$route.params.id)"
+        >Статьи</ProfileBack
       >
-      <div class="mt-6">
-        <ArticleForm />
-      </div>
-
+      <NuxtLink
+        class="block w-fit"
+        :to="
+          ROUTES_NAMES.clinic_profile_clinics_articles_add(+$route.params.id)
+        "
+      >
+        <UiButton>Добавить</UiButton>
+      </NuxtLink>
+      <ProfileClinicWorkerList :clinicWorkers="clinicWorkers" />
       <div class="flex gap-x-2 items-center justify-center">
         <IconMap width="18" height="18" />
         <span>Уфа</span>
@@ -21,21 +26,18 @@
 <script lang="ts" setup>
 import api from "~/api";
 import type IUser from "~/interfaces/models/User";
-const route = useRoute();
 
 const user = useState<IUser>("user");
+const route = useRoute();
 
-// const article = await api.articles
-//   .get({
-//     id: route.params.id.toString(),
-//     params: {
-//       //   extends:
-//       // "clinic_phones,clinic_categories.category,clinic_services.service,images.image",
-//       //   "filterEQ[owner_id]": user.value?.id,
-//       //   extends: "city",
-//     },
-//   })
-//   ?.then((res) => res?.data);
+const clinicWorkers = await api.clinicWorker
+  .getAll({
+    params: {
+      "filterEQ[clinic_id]": route.params.id,
+      // extends: "city",
+    },
+  })
+  ?.then((res) => res?.data);
 
 definePageMeta({
   middleware: ["auth"],

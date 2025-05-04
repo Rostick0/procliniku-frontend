@@ -7,7 +7,7 @@
         >Назад</ProfileBack
       >
       <div class="mt-6">
-        <ArticleForm />
+        <ArticleForm :article="article" />
       </div>
 
       <div class="flex gap-x-2 items-center justify-center">
@@ -20,22 +20,20 @@
 
 <script lang="ts" setup>
 import api from "~/api";
-import type IUser from "~/interfaces/models/User";
+
 const route = useRoute();
 
-const user = useState<IUser>("user");
-
-// const article = await api.articles
-//   .get({
-//     id: route.params.id.toString(),
-//     params: {
-//       //   extends:
-//       // "clinic_phones,clinic_categories.category,clinic_services.service,images.image",
-//       //   "filterEQ[owner_id]": user.value?.id,
-//       //   extends: "city",
-//     },
-//   })
-//   ?.then((res) => res?.data);
+const article = await api.articles
+  .get({
+    id: route.params.article_id.toString(),
+    params: {
+      //   extends:
+      // "clinic_phones,clinic_categories.category,clinic_services.service,images.image",
+      //   "filterEQ[owner_id]": user.value?.id,
+      //   extends: "city",
+    },
+  })
+  ?.then((res) => res?.data);
 
 definePageMeta({
   middleware: ["auth"],

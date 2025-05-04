@@ -23,9 +23,6 @@ const props = defineProps<IProps>();
 
 const route = useRoute();
 
-type step = 1 | 2 | 3 | 4;
-const step = ref<step>(1);
-
 const { handleSubmit, setErrors } = useForm();
 
 const onSubmut = handleSubmit(async (values) => {
