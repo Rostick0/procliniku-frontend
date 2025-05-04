@@ -61,6 +61,6 @@ const onSubmut = handleSubmit(async (values) => {
   }
 
   success("Статья успешно добавлена");
-  router.back();
+  navigateTo(ROUTES_NAMES.clinic_profile_clinics_articles(+route.params.id));
 });
 </script>

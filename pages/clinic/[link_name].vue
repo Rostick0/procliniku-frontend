@@ -41,7 +41,7 @@
         <div class="">{{ data?.description }}</div>
       </div>
       <div class="w-full">
-        <UiYandexMap class="h-64" :cords="[data?.longitude, data?.latitude]" />
+        <UiYandexMap class="h-64" :coords="[data?.longitude, data?.latitude]" />
       </div>
     </div>
   </div>

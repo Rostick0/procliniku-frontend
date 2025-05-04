@@ -4,13 +4,11 @@
       <ProfileTop />
       <ProfileBack
         :to="ROUTES_NAMES.clinic_profile_clinics_id(+$route.params.id)"
-        >Статьи</ProfileBack
+        >Сотрудники</ProfileBack
       >
       <NuxtLink
         class="block w-fit"
-        :to="
-          ROUTES_NAMES.clinic_profile_clinics_articles_add(+$route.params.id)
-        "
+        :to="ROUTES_NAMES.clinic_profile_clinics_workers_add(+$route.params.id)"
       >
         <UiButton>Добавить</UiButton>
       </NuxtLink>
@@ -34,7 +32,7 @@ const clinicWorkers = await api.clinicWorker
   .getAll({
     params: {
       "filterEQ[clinic_id]": route.params.id,
-      // extends: "city",
+      extends: "user",
     },
   })
   ?.then((res) => res?.data);

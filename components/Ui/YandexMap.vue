@@ -6,46 +6,55 @@
 import ymaps from "ymaps";
 
 interface IProps {
-  cords: number[];
+  coords: number[];
   zoom?: number;
   controls?: any[] | never[];
+  withEditCoords?: boolean;
+  placemarkOption?: object;
 }
 
-const props = withDefaults(defineProps<IProps>(), {
-  zoom: 12,
-  controls: [],
-});
+const { withEditCoords, placemarkOption, ...props } = withDefaults(
+  defineProps<IProps>(),
+  {
+    // coords: [54.7431, 55.9678],
+    zoom: 12,
+    controls: [],
+  }
+);
+
+const emits = defineEmits(["update:modelValue"]);
 
 const map = ref(null);
 
 onMounted(() => {
   ymaps.load().then((maps: any) => {
-    //   console.log(maps);
-
     const myMap = new maps.Map(map.value, {
-      center: props.cords,
+      center: props.coords,
       ...props,
       // controls: ["geolocationControl"],
     });
 
     const myPlacemark = new maps.Placemark(
-      myMap.getCenter()
-      // {},
-      // {
-      //   draggable: true,
-      // }
+      myMap.getCenter(),
+      {},
+      placemarkOption
     );
 
-    //   myPlacemark.events.add("dragend", function (e: any) {
-    //     const coord = e.get("target").geometry.getCoordinates();
-    //     value.value = coord;
-    //   });
+    if (withEditCoords) {
+      myPlacemark.events.add("dragend", function (e: any) {
+        emits("update:modelValue", e.get("target").geometry.getCoordinates());
+      });
+      myMap.events.add("click", function (e: any) {
+        console.log(myPlacemark);
+        myPlacemark.geometry.setCoordinates(e.get("coords"));
+
+        emits("update:modelValue", e.get("coords"));
+      });
+    }
 
     return myMap.geoObjects.add(myPlacemark);
   });
 });
-
-// await ymaps.then(res => res.)
 </script>
 
 <style lang="scss" scoped>

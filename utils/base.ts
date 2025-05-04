@@ -143,13 +143,14 @@ export const convertValuesToString = (obj: object) => {
 //   }
 // };
 
-// function declination(number, titles = [" год", " года", " лет"]) {
-//   const cases = [2, 0, 1, 1, 1, 2];
-//   return titles[
-//     number % 100 > 4 && number % 100 < 20
-//       ? 2
-//       : cases[number % 10 < 5 ? number % 10 : 5]
-//   ];
-// }
+export const CLINIC_WORKER_ROLES = {
+  owner: "Руководитель",
+  provider: "Исполнитель",
+  specialist: "Специалист",
+};
 
-export const getTgNick = (nickname: string) => "@" + last(nickname?.split(" "));
+export const CLINIC_WORKER_ROLES_OPTIONS = [
+  { id: "owner", name: "Руководитель" },
+  { id: "provider", name: "Исполнитель" },
+  { id: "specialist", name: "Специалист" },
+];

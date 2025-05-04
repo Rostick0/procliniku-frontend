@@ -48,6 +48,13 @@ const onSubmut = handleSubmit(async (values) => {
   // console.log(data);
   // return;
 
+  if (data?.coords) {
+    data.latitude = data?.coords[0];
+    data.longitude = data?.coords[1];
+  }
+  console.log(data);
+
+  // return;
   const res = await api.clinics.update({
     id: route.params.id.toString(),
     data,

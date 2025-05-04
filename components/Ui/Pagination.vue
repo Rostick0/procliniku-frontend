@@ -1,5 +1,5 @@
 <template>
-  <ul class="pagination shadow-md mx-auto" v-if="number > 1">
+  <ul class="pagination mt-4 mx-auto" v-if="number > 1">
     <li v-if="page > 1 && $slots.leftIcon" @click="setPage(page - 1)">
       <slot name="leftIcon"></slot>
     </li>
@@ -125,28 +125,5 @@ const items = computed(() => {
       border-right: none;
     }
   }
-
-  // &-item {
-  //   border: 1px solid var(--color-basic);
-  //   border-right-width: 0;
-  //   display: flex;
-  //   justify-content: center;
-  //   text-align: center;
-
-  //   // border-radius: 12px;
-  //   // background: #fff;
-  //   // &:hover {
-  //   //   background-color: #a4bcf857;
-  //   // }
-
-  //   &:first-child {
-  //     border-radius: 8px 0 0 8px;
-  //   }
-
-  //   &:last-child {
-  //     border-radius: 0 8px 8px 0;
-  //     border-right-width: 1px;
-  //   }
-  // }
 }
 </style>

@@ -8,7 +8,7 @@
     <div class="flex gap-x-1.5 items-start mb-4">
       <ClinicInfo class="clinic__info" :clinic="clinic" />
       <div class="grow">
-        <UiYandexMap :cords="[clinic?.longitude, clinic?.latitude]" />
+        <UiYandexMap :coords="[clinic?.latitude, clinic?.longitude]" />
       </div>
     </div>
     <NuxtLink class="flex" :to="`${ROUTES_NAMES.clinic}/${clinic?.link_name}`">

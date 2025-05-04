@@ -6,7 +6,8 @@
         :to="ROUTES_NAMES.clinic_profile_clinics_id(+$route.params.id)"
         >Назад</ProfileBack
       >
-      <ProfileClinicList :clinics="clinics" />
+      <ProfileClinicList v-if="clinics?.length" :clinics="clinics" />
+      <UiPagination v-model="filters.page" :meta="meta" />
       <div class="flex gap-x-2 items-center justify-center">
         <IconMap width="18" height="18" />
         <span>Уфа</span>
@@ -18,17 +19,35 @@
 <script lang="ts" setup>
 import api from "~/api";
 import type IUser from "~/interfaces/models/User";
+import type IClinic from "~/interfaces/models/Clinic";
 
 const user = useState<IUser>("user");
 
-const clinics = await api.clinics
-  .getAll({
-    params: {
-      "filterEQ[owner_id]": user.value?.id,
-      extends: "city",
-    },
-  })
-  ?.then((res) => res?.data);
+const { filters } = useFilter<initialFiltersItem>({
+  initialFilters: {
+    page: 1,
+  },
+});
+
+const { data: clinics, meta } = await useApi<IClinic[]>({
+  apiName: "clinics",
+  apiMethod: "getAll",
+  filters,
+  params: {
+    "filterEQ[owner_id]": user.value?.id,
+    extends: "city",
+  },
+  init: true,
+});
+
+// const clinics = await api.clinics
+//   .getAll({
+//     params: {
+//       "filterEQ[owner_id]": user.value?.id,
+//       extends: "city",
+//     },
+//   })
+//   ?.then((res) => res?.data);
 
 definePageMeta({
   middleware: ["auth"],

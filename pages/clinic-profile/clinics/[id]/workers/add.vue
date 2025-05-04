@@ -3,11 +3,11 @@
     <div class="profile shadow-md p-3">
       <ProfileTop />
       <ProfileBack
-        :to="ROUTES_NAMES.clinic_profile_clinics_articles(+$route.params.id)"
-        >Назад</ProfileBack
+        :to="ROUTES_NAMES.clinic_profile_clinics_workers(+$route.params.id)"
+        >Добавление сотрудника</ProfileBack
       >
       <div class="mt-6">
-        <ArticleForm />
+        <ClinicWorkerForm />
       </div>
 
       <div class="flex gap-x-2 items-center justify-center">

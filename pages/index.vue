@@ -6,6 +6,7 @@
       диагностики.
     </div>
     <ClinicList :clinics="data" />
+    <UiPagination v-model="filters.page" :meta="meta" />
   </div>
 </template>
 
@@ -16,9 +17,11 @@ import debounce from "lodash/debounce";
 const searchQuery = ref();
 const { filters } = useFilter<{
   filterQ: string;
+  page: number;
 }>({
   initialFilters: {
     filterQ: "",
+    page: 1,
   },
 });
 
@@ -27,7 +30,7 @@ watch(
   debounce((cur) => (filters.value.filterQ = cur), 500)
 );
 
-const { data, get } = await useApi<IClinic[]>({
+const { data, get, meta } = await useApi<IClinic[]>({
   apiName: "clinics",
   apiMethod: "getAll",
   params: {

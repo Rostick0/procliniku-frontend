@@ -1,4 +1,5 @@
 <template>
+  <VFormComponent :field="coords" />
   <VFormComponent :field="address" />
   <VFormComponent :field="phone" />
   <VFormComponent :field="additional_phone" />
@@ -12,6 +13,20 @@ interface IProps {
 }
 
 const props = defineProps<IProps>();
+
+const coords = ref({
+  type: "yandex-map",
+  name: "coords",
+  rules: "required",
+  modelValue:
+    props.clinic?.latitude && props.clinic?.longitude
+      ? [props.clinic?.latitude, props.clinic?.longitude]
+      : null,
+
+  bind: {
+    label: "Доп. телефон",
+  },
+});
 
 const address = ref({
   type: "text",

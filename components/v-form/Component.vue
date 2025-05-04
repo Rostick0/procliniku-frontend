@@ -6,7 +6,7 @@
       v-bind="field.bind"
       :errorMessage="errorMessage"
     />
-    <UiMultiSelect
+    <VFormMultiSelect
       v-else-if="field.type == 'select'"
       v-model="model"
       v-bind="field.bind"
@@ -67,12 +67,6 @@
       v-bind="field.bind"
       :error-message="errorMessage"
     />
-    <UiTelSelect
-      v-else-if="field.type == 'tel'"
-      v-model="model"
-      v-bind="field.bind"
-      :error-message="errorMessage"
-    />
     <UiSwitch
       v-else-if="field.type == 'switch'"
       v-model="model"
@@ -101,6 +95,13 @@
 
     <VFormRecaptcha
       v-else-if="field.type == 'recaptcha'"
+      v-model="model"
+      v-bind="field.bind"
+      :error-message="errorMessage"
+    />
+
+    <VFormYandexMap
+      v-else-if="field.type == 'yandex-map'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"

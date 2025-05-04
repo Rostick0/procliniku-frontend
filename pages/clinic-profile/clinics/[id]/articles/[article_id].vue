@@ -4,7 +4,7 @@
       <ProfileTop />
       <ProfileBack
         :to="ROUTES_NAMES.clinic_profile_clinics_articles(+$route.params.id)"
-        >Назад</ProfileBack
+        >Изменение статьи</ProfileBack
       >
       <div class="mt-6">
         <ArticleForm :article="article" />

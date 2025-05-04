@@ -4,7 +4,7 @@
       <ProfileTop />
       <ProfileBack
         :to="ROUTES_NAMES.clinic_profile_clinics_id(+$route.params.id)"
-        >Назад</ProfileBack
+        >Изменение клиник</ProfileBack
       >
       <div class="mt-6">
         <ClinicMutationForm :clinic="clinic">
