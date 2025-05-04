@@ -40,15 +40,6 @@ const { data: clinics, meta } = await useApi<IClinic[]>({
   init: true,
 });
 
-// const clinics = await api.clinics
-//   .getAll({
-//     params: {
-//       "filterEQ[owner_id]": user.value?.id,
-//       extends: "city",
-//     },
-//   })
-//   ?.then((res) => res?.data);
-
 definePageMeta({
   middleware: ["auth"],
 });

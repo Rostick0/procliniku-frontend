@@ -1,4 +1,5 @@
 import moment from "moment";
+import type IClinicWorkTime from "~/interfaces/models/ClinicWorkTime";
 
 export const isCurrentYear = (date: Date | number | string) =>
   new Date().getFullYear() === new Date(date).getFullYear();
@@ -27,4 +28,34 @@ export const getYearsString = (years: number): string => {
     default:
       return `${years} лет`;
   }
+};
+
+export const convertTimeToEdit = (timeString: string) => {
+  if (!timeString)
+    return {
+      hours: "00",
+      minutes: "00",
+      seconds: "00",
+    };
+  const timeSplit = timeString?.split?.(":");
+
+  return {
+    hours: timeSplit?.[0],
+    minutes: timeSplit?.[1],
+    seconds: timeSplit?.[2],
+  };
+};
+
+export const convertTimeWorkToDefault = (
+  day: number,
+  workTimes?: IClinicWorkTime[]
+) => {
+  const workTimeDefault = workTimes?.find((item) => item.day === day);
+
+  return workTimeDefault
+    ? [
+        convertTimeToEdit(workTimeDefault.time_start),
+        convertTimeToEdit(workTimeDefault.time_end),
+      ]
+    : "";
 };

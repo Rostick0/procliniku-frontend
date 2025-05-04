@@ -4,7 +4,9 @@ import type ICity from "./City";
 import type IClinicCategory from "./ClinicCategory";
 import type IClinicPhone from "./ClinicPhone";
 import type IClinicService from "./ClinicService";
+import type IClinicWorkTime from "./ClinicWorkTime";
 import type IFavorite from "./Favorite";
+import type IImage from "./Image";
 import type IImageRelat from "./ImageRelat";
 
 export default interface IClinic extends ITimestamps {
@@ -19,11 +21,16 @@ export default interface IClinic extends ITimestamps {
   description?: string;
   is_verification: boolean;
   owner_id: number;
+  icon_id?: number;
+  link_vk?: string;
+  link_videohost?: string;
   main_category: ICategory;
   clinic_categories?: IClinicCategory[];
   clinic_services?: IClinicService[];
   city?: ICity;
   clinic_phones?: IClinicPhone[];
+  icon?: IImage;
   images?: IImageRelat[];
+  work_times: IClinicWorkTime[];
   my_favorite?: IFavorite;
 }

@@ -4,9 +4,9 @@
       <ProfileTop />
       <ProfileBack
         :to="ROUTES_NAMES.clinic_profile_clinics_id(+$route.params.id)"
-        >Изменение клиник</ProfileBack
+        >Изменение клиники</ProfileBack
       >
-      <div class="mt-6">
+      <div class="mt-6" v-if="clinic">
         <ClinicMutationForm :clinic="clinic">
           <slot :clinic="clinic" />
         </ClinicMutationForm>
@@ -22,26 +22,24 @@
 
 <script lang="ts" setup>
 import api from "~/api";
+import type IClinic from "~/interfaces/models/Clinic";
 import type IUser from "~/interfaces/models/User";
 const route = useRoute();
 
 const user = useState<IUser>("user");
 
-const clinic = await api.clinics
-  .get({
-    id: route.params.id.toString(),
-    params: {
-      extends:
-        "clinic_phones,clinic_categories.category,clinic_services.service,images.image",
-      //   "filterEQ[owner_id]": user.value?.id,
-      //   extends: "city",
-    },
-  })
-  ?.then((res) => res?.data);
-
-definePageMeta({
-  middleware: ["auth"],
+const { data: clinic, get } = await useApi<IClinic>({
+  apiName: "clinics",
+  apiMethod: "get",
+  params: {
+    extends:
+      "clinic_phones,clinic_categories.category,clinic_services.service,images.image,icon,work_times",
+  },
+  requestParams: {
+    id: route.params.id,
+  },
 });
+await get();
 </script>
 
 <style lang="scss" scoped>

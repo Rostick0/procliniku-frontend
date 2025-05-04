@@ -3,6 +3,14 @@
   <VFormComponent :field="address" />
   <VFormComponent :field="phone" />
   <VFormComponent :field="additional_phone" />
+  <p>График работы:</p>
+  <VFormComponent :field="work_times_0" />
+  <VFormComponent :field="work_times_1" />
+  <VFormComponent :field="work_times_2" />
+  <VFormComponent :field="work_times_3" />
+  <VFormComponent :field="work_times_4" />
+  <VFormComponent :field="work_times_5" />
+  <VFormComponent :field="work_times_6" />
 </template>
 
 <script lang="ts" setup>
@@ -24,7 +32,7 @@ const coords = ref({
       : null,
 
   bind: {
-    label: "Доп. телефон",
+    label: "Кординаты",
   },
 });
 
@@ -60,6 +68,105 @@ const additional_phone = ref({
   bind: {
     label: "Доп. телефон",
     type: "tel",
+  },
+});
+
+const workTimeDefault1 = props.clinic?.work_times?.find(
+  (item) => item.day === 6
+);
+
+const getTimeWorkToDefault = (day: number) =>
+  convertTimeWorkToDefault(day, props.clinic?.work_times);
+
+const work_times_0 = ref({
+  type: "date",
+  name: "work_times.0",
+  modelValue: getTimeWorkToDefault(0),
+
+  bind: {
+    label: "Пн",
+    // type: "tel",
+    range: true,
+    timePicker: true,
+    format: "HH:mm",
+  },
+});
+
+const work_times_1 = ref({
+  type: "date",
+  name: "work_times.1",
+  modelValue: getTimeWorkToDefault(1),
+
+  bind: {
+    label: "Вт",
+    range: true,
+    timePicker: true,
+    format: "HH:mm",
+  },
+});
+
+const work_times_2 = ref({
+  type: "date",
+  name: "work_times.2",
+  modelValue: getTimeWorkToDefault(2),
+
+  bind: {
+    label: "Ср",
+    range: true,
+    timePicker: true,
+    format: "HH:mm",
+  },
+});
+
+const work_times_3 = ref({
+  type: "date",
+  name: "work_times.3",
+  modelValue: getTimeWorkToDefault(3),
+
+  bind: {
+    label: "Чт",
+    range: true,
+    timePicker: true,
+    format: "HH:mm",
+  },
+});
+
+const work_times_4 = ref({
+  type: "date",
+  name: "work_times.4",
+  modelValue: getTimeWorkToDefault(4),
+
+  bind: {
+    label: "Пт",
+    range: true,
+    timePicker: true,
+    format: "HH:mm",
+  },
+});
+
+const work_times_5 = ref({
+  type: "date",
+  name: "work_times.5",
+  modelValue: getTimeWorkToDefault(5),
+
+  bind: {
+    label: "Сб",
+    range: true,
+    timePicker: true,
+    format: "HH:mm",
+  },
+});
+
+const work_times_6 = ref({
+  type: "date",
+  name: "work_times.6",
+  modelValue: getTimeWorkToDefault(6),
+
+  bind: {
+    label: "Вс",
+    range: true,
+    timePicker: true,
+    format: "HH:mm",
   },
 });
 </script>

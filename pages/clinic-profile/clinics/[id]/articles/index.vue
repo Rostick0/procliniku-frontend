@@ -7,14 +7,15 @@
         >Статьи</ProfileBack
       >
       <NuxtLink
-        class="block w-fit"
+        class="block w-fit mt-2"
         :to="
           ROUTES_NAMES.clinic_profile_clinics_articles_add(+$route.params.id)
         "
       >
         <UiButton>Добавить</UiButton>
       </NuxtLink>
-      <ProfileArticleList :articles="articles" />
+      <ProfileArticleList v-if="articles?.length" :articles="articles" />
+      <UiPagination v-model="filters.page" :meta="meta" />
       <div class="flex gap-x-2 items-center justify-center">
         <IconMap width="18" height="18" />
         <span>Уфа</span>
@@ -25,19 +26,29 @@
 
 <script lang="ts" setup>
 import api from "~/api";
+import type IArticle from "~/interfaces/models/Article";
 import type IUser from "~/interfaces/models/User";
 
 const user = useState<IUser>("user");
 const route = useRoute();
 
-const articles = await api.articles
-  .getAll({
-    params: {
-      "filterEQ[clinic_id]": route.params.id,
-      // extends: "city",
-    },
-  })
-  ?.then((res) => res?.data);
+const { filters } = useFilter<{
+  page: number;
+}>({
+  initialFilters: {
+    page: 1,
+  },
+});
+
+const { data: articles, meta } = await useApi<IArticle[]>({
+  apiName: "articles",
+  apiMethod: "getAll",
+  filters,
+  params: {
+    "filterEQ[clinic_id]": route.params.id,
+  },
+  init: true,
+});
 
 definePageMeta({
   middleware: ["auth"],

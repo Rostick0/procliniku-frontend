@@ -18,14 +18,14 @@
       v-bind="field.bind"
       :error-message="errorMessage"
     />
-    <UiCheckbox
+    <!-- <UiCheckbox
       v-else-if="field.type == 'checkbox'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"
     >
       <slot />
-    </UiCheckbox>
+    </UiCheckbox> -->
     <VFormMultiMSelect
       v-else-if="field.type == 'multiple-select'"
       v-model="model"
@@ -34,20 +34,21 @@
       :name="field.name"
     />
 
-    <UiDatePicker
+    <VFormDatePicker
       v-else-if="field.type == 'date'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"
     />
+    <!-- 
     <UiFileLoader
       v-else-if="field.type == 'file-loader'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"
-    />
+    /> -->
 
-    <UiPhotoLoader
+    <VFormPhotoLoader
       v-else-if="field.type == 'photo-loader'"
       v-model="model"
       v-bind="field.bind"
@@ -61,30 +62,13 @@
       :error-message="errorMessage"
       @setError="setErrors"
     />
-    <UiRadio
-      v-else-if="field.type == 'radio'"
-      v-model="model"
-      v-bind="field.bind"
-      :error-message="errorMessage"
-    />
-    <UiSwitch
+
+    <!-- <UiSwitch
       v-else-if="field.type == 'switch'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"
-    />
-    <UiRange
-      v-else-if="field.type == 'range'"
-      v-model="model"
-      v-bind="field.bind"
-      :error-message="errorMessage"
-    />
-    <UiSelectCheckbox
-      v-else-if="field.type == 'select-checkbox'"
-      v-model="model"
-      v-bind="field.bind"
-      :error-message="errorMessage"
-    />
+    /> -->
 
     <VFormCkeditor
       v-else-if="field.type == 'ckeditor'"

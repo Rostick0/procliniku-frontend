@@ -13,6 +13,16 @@
 //   color: var(--color-blue);
 // }
 
+.btn {
+  @apply rounded-lg text-white text-sm font-bold ;
+
+  background-color: var(--ui-color);
+
+  &.bg-grey {
+    background-color: var(--grey-color);
+  }
+}
+
 .border-color-ui {
   border-color: var(--ui-color);
 }

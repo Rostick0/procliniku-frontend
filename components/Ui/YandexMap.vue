@@ -45,7 +45,6 @@ onMounted(() => {
         emits("update:modelValue", e.get("target").geometry.getCoordinates());
       });
       myMap.events.add("click", function (e: any) {
-        console.log(myPlacemark);
         myPlacemark.geometry.setCoordinates(e.get("coords"));
 
         emits("update:modelValue", e.get("coords"));

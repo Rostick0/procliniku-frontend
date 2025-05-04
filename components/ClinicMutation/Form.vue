@@ -24,17 +24,20 @@ const props = defineProps<IProps>();
 const route = useRoute();
 
 const { handleSubmit, setErrors } = useForm();
+const { getImageFrom, getImageIdsFrom } = useImages();
 
 const onSubmut = handleSubmit(async (values) => {
   const data = values;
   // console.log(values);
-  if (data?.clinic_phones) data.clinic_phones = data.clinic_phones.join(",");
-  if (data?.images) {
-    const { getImageIdsFrom } = useImages();
 
-    const images = await getImageIdsFrom(values?.images);
-    data.images = images;
+  if (values?.icon_id) {
+    const icon = await getImageFrom(values?.icon_id);
+    if (icon?.id) data.icon_id = icon.id;
   }
+
+  if (data?.clinic_phones) data.clinic_phones = data.clinic_phones.join(",");
+
+  if (data?.images) data.images = await getImageIdsFrom(values?.images);
 
   if (data?.clinic_categories)
     data.clinic_categories = data.clinic_categories
@@ -52,9 +55,41 @@ const onSubmut = handleSubmit(async (values) => {
     data.latitude = data?.coords[0];
     data.longitude = data?.coords[1];
   }
-  console.log(data);
 
-  // return;
+  if (data?.work_times) {
+    const workTimes: Array<{
+      day: number;
+      time_start: string;
+      time_end: string;
+    }> = [];
+
+    data.work_times?.forEach(
+      (
+        dates: Array<{ hours: number; minutes: number; seconds: number }>,
+        index: number
+      ) => {
+        if (!dates?.length) return;
+
+        workTimes.push({
+          day: index,
+          time_start: `${addLeadingZeros(
+            dates[0]["hours"],
+            2
+          )}:${addLeadingZeros(dates[0]["minutes"], 2)}:${addLeadingZeros(
+            dates[0]["seconds"],
+            2
+          )}`,
+          time_end: `${addLeadingZeros(dates[1]["hours"], 2)}:${addLeadingZeros(
+            dates[1]["minutes"],
+            2
+          )}:${addLeadingZeros(dates[1]["seconds"], 2)}`,
+        });
+      }
+    );
+
+    data.work_times = workTimes;
+  }
+
   const res = await api.clinics.update({
     id: route.params.id.toString(),
     data,

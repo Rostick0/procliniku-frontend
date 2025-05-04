@@ -154,3 +154,6 @@ export const CLINIC_WORKER_ROLES_OPTIONS = [
   { id: "provider", name: "Исполнитель" },
   { id: "specialist", name: "Специалист" },
 ];
+
+export const addLeadingZeros = (num: number, totalLength: number) =>
+  num.toString().padStart(totalLength, "0");
