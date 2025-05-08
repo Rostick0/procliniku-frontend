@@ -33,7 +33,7 @@ const { data: clinic, get } = await useApi<IClinic>({
   apiMethod: "get",
   params: {
     extends:
-      "clinic_phones,clinic_categories.category,clinic_services.service,images.image,icon,work_times",
+      "clinic_phones,clinic_categories.category,city,clinic_services.service,images.image,icon,work_times",
   },
   requestParams: {
     id: route.params.id,

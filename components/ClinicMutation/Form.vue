@@ -54,6 +54,8 @@ const onSubmut = handleSubmit(async (values) => {
     data.longitude = data?.coords[1];
   }
 
+  if (data?.city_id?.id) data.city_id = data.city_id.id;
+
   if (data?.work_times) {
     const workTimes: Array<{
       day: number;
@@ -96,6 +98,8 @@ const onSubmut = handleSubmit(async (values) => {
   if (res?.error) {
     setErrors(res?.errorResponse);
     return;
+  } else {
+    success("Данные успешно обновлены");
   }
 });
 </script>

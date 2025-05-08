@@ -34,8 +34,6 @@ interface IProps {
 }
 
 const props = defineProps<IProps>();
-
-// console.log(groupWorkTimes(props.clinic.work_times))
 </script>
 
 <style lang="scss" scopedc>

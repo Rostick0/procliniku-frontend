@@ -1,7 +1,6 @@
 <template>
   <div @focusout="onFocusout" ref="wrapper" class="select">
     <div
-      v-if="!isHideInput"
       @keydown.enter="!alwaysOpen && (isOpened = !isOpened)"
       class="select__field"
       tabindex="0"
@@ -47,7 +46,7 @@
     </div>
     <div
       class="select__options"
-      v-show="alwaysOpen || isHideInput || isOpened"
+      v-show="alwaysOpen || isOpened"
       ref="selectRef"
       @mousedown.prevent
     >
@@ -119,10 +118,6 @@ const emits = defineEmits([
   "update:searchString",
 ]);
 
-if (props.isHideInput) {
-  emits("update:searchString", null);
-}
-
 const model = computed({
   get() {
     if (!props.modelValue) return;
@@ -175,18 +170,11 @@ const handleSelect = (option) => {
   if (props.closeAfterSelect) {
     isOpened.value = false;
   }
-  if (!props.isHideInput) {
-    emits(
-      "update:searchString",
-      option?.value ?? option?.name ?? option?.title
-    );
-  }
+  emits("update:searchString", option?.value ?? option?.name ?? option?.title);
   model.value = option;
 };
 
-const addMore = (event) => {
-  emits("scrolledBottom", event.target);
-};
+const addMore = (event) => emits("scrolledBottom", event.target);
 </script>
 
 <style lang="scss" scoped>
@@ -227,11 +215,9 @@ const addMore = (event) => {
   }
 
   &__value {
-    border-radius: 8px;
     background-color: #f5f5f5;
     border-radius: 8px;
     font-size: 16px;
-    font-weight: 700;
     padding: 12px;
     width: 100%;
   }

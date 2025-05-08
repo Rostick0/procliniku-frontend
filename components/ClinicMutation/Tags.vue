@@ -26,7 +26,6 @@ const clinic_categories = ref({
 
   bind: {
     label: "Теги",
-    debounceMs: 200,
     searchFn: async (
       _: any,
       searchString: string,
@@ -54,7 +53,6 @@ const clinic_services = ref({
 
   bind: {
     label: "Услуги",
-    debounceMs: 200,
     searchFn: async (
       _: any,
       searchString: string,

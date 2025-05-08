@@ -36,4 +36,14 @@ function handleInput(date) {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.dp__main {
+  .dp__pointer {
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 8px;
+    padding: 0.586rem 0.75rem;
+    padding-left: 2.25rem;
+  }
+}
+</style>

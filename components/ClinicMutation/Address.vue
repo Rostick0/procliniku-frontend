@@ -1,8 +1,10 @@
 <template>
   <VFormComponent :field="coords" />
+  <VFormComponent :field="city_id" />
   <VFormComponent :field="address" />
   <VFormComponent :field="phone" />
   <VFormComponent :field="additional_phone" />
+  <br />
   <p>График работы:</p>
   <VFormComponent :field="work_times_0" />
   <VFormComponent :field="work_times_1" />
@@ -14,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+import api from "~/api";
 import type IClinic from "~/interfaces/models/Clinic";
 
 interface IProps {
@@ -33,6 +36,31 @@ const coords = ref({
 
   bind: {
     label: "Кординаты",
+  },
+});
+
+const city_id = ref({
+  type: "select",
+  name: "city_id",
+  rules: "required",
+  modelValue: props.clinic?.city ?? "",
+
+  bind: {
+    label: "Город",
+    isSearchable: true,
+    searchFn: async (
+      _: any,
+      searchString: string,
+      limit: number,
+      page: number
+    ) =>
+      await api.cities.getAll({
+        params: {
+          "filterLIKE[name]": searchString,
+          limit,
+          page,
+        },
+      }),
   },
 });
 
@@ -71,10 +99,6 @@ const additional_phone = ref({
   },
 });
 
-const workTimeDefault1 = props.clinic?.work_times?.find(
-  (item) => item.day === 6
-);
-
 const getTimeWorkToDefault = (day: number) =>
   convertTimeWorkToDefault(day, props.clinic?.work_times);
 
@@ -88,7 +112,8 @@ const work_times_0 = ref({
     // type: "tel",
     range: true,
     timePicker: true,
-    format: "HH:mm",
+    autoApply: true,
+    // format: () => "HH:mm",
   },
 });
 
@@ -101,7 +126,8 @@ const work_times_1 = ref({
     label: "Вт",
     range: true,
     timePicker: true,
-    format: "HH:mm",
+    autoApply: true,
+    // format: () => "HH:mm",
   },
 });
 
@@ -114,7 +140,8 @@ const work_times_2 = ref({
     label: "Ср",
     range: true,
     timePicker: true,
-    format: "HH:mm",
+    autoApply: true,
+    // format: () => "HH:mm",
   },
 });
 
@@ -127,7 +154,8 @@ const work_times_3 = ref({
     label: "Чт",
     range: true,
     timePicker: true,
-    format: "HH:mm",
+    autoApply: true,
+    // format: () => "HH:mm",
   },
 });
 
@@ -140,7 +168,8 @@ const work_times_4 = ref({
     label: "Пт",
     range: true,
     timePicker: true,
-    format: "HH:mm",
+    autoApply: true,
+    // format: () => "HH:mm",
   },
 });
 
@@ -153,7 +182,8 @@ const work_times_5 = ref({
     label: "Сб",
     range: true,
     timePicker: true,
-    format: "HH:mm",
+    autoApply: true,
+    // format: () => "HH:mm",
   },
 });
 
@@ -166,7 +196,8 @@ const work_times_6 = ref({
     label: "Вс",
     range: true,
     timePicker: true,
-    format: "HH:mm",
+    autoApply: true,
+    // format: () => "HH:mm",
   },
 });
 </script>

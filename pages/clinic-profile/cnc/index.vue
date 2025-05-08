@@ -89,6 +89,10 @@
 </template>
 
 <script lang="ts" setup>
+useHead({
+  title: "Рабочий стол",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });
