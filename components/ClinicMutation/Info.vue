@@ -15,7 +15,6 @@ interface IProps {
 }
 
 const props = defineProps<IProps>();
-// console.log(props.clinic?.icon.path);
 
 const icon_id = ref({
   type: "photo-loader",

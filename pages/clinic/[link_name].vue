@@ -58,7 +58,7 @@ const data = await api.clinics
   .showByLinkName({
     link_name: route.params?.link_name as string,
     params: {
-      extends: "clinic_phones,my_favorite",
+      extends: "work_times,clinic_phones,my_favorite",
     },
   })
   ?.then((res: { data?: IClinic }) => res?.data);
@@ -99,7 +99,9 @@ useSeoMeta({
 <style lang="scss" scoped>
 .clinic {
   &__raiting {
+    margin-left: auto;
     width: 25vw;
+    max-width: 160px;
   }
 }
 </style>

@@ -6,7 +6,11 @@
     </div>
     <div class="flex items-start gap-x-3">
       <IconClock class="shrink-0" />
-      <span>Пн-Пт 09:00–21:00; <br />Сб-Вс 09:00–17:00</span>
+      <ClinicWorkTime
+        v-if="clinic.work_times?.length"
+        :clinicWorkTime="clinic.work_times"
+      />
+      <template v-else>Не указан</template>
     </div>
     <div class="flex items-start gap-x-3">
       <IconTel class="shrink-0" />
@@ -30,6 +34,8 @@ interface IProps {
 }
 
 const props = defineProps<IProps>();
+
+// console.log(groupWorkTimes(props.clinic.work_times))
 </script>
 
 <style lang="scss" scopedc>

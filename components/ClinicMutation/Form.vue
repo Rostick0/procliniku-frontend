@@ -14,6 +14,7 @@ import { useForm } from "vee-validate";
 import api from "~/api";
 import type ICategory from "~/interfaces/models/Category";
 import type IClinic from "~/interfaces/models/Clinic";
+import type IImage from "~/interfaces/models/Image";
 import type IService from "~/interfaces/models/Service";
 
 interface IProps {
@@ -28,10 +29,9 @@ const { getImageFrom, getImageIdsFrom } = useImages();
 
 const onSubmut = handleSubmit(async (values) => {
   const data = values;
-  // console.log(values);
 
   if (values?.icon_id) {
-    const icon = await getImageFrom(values?.icon_id);
+    const icon = (await getImageFrom(values?.icon_id)) as IImage;
     if (icon?.id) data.icon_id = icon.id;
   }
 
@@ -48,8 +48,6 @@ const onSubmut = handleSubmit(async (values) => {
     data.clinic_services = data.clinic_services
       .map((item: IService) => item.id)
       .join(",");
-  // console.log(data);
-  // return;
 
   if (data?.coords) {
     data.latitude = data?.coords[0];

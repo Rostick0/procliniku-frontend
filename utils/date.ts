@@ -59,3 +59,38 @@ export const convertTimeWorkToDefault = (
       ]
     : "";
 };
+
+export const weekdays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
+export const groupWorkTimes = (workTimes: IClinicWorkTime[]) => {
+  const grouped = [];
+
+  // Перебираем дни и группируем одинаковые рабочие часы подряд
+  for (let i = 0; i < workTimes.length; ) {
+    let startDayIndex = i;
+
+    while (
+      i + 1 < workTimes.length &&
+      workTimes[i].time_start === workTimes[i + 1].time_start &&
+      workTimes[i].time_end === workTimes[i + 1].time_end &&
+      workTimes[i].day + 1 === workTimes[i + 1].day
+    ) {
+      i++;
+    }
+    // Получаем диапазон дней и рабочее время
+    const endDayIndex = i;
+    const startDayKey = workTimes[startDayIndex].day;
+    const endDayKey = workTimes[endDayIndex].day;
+
+    const daysRange =
+      `${weekdays[startDayKey]}` +
+      (startDayKey !== endDayKey ? `-${weekdays[endDayIndex]}` : "");
+    const hoursRange = `${workTimes[startDayIndex].time_start}-${workTimes[startDayIndex].time_end}`;
+
+    grouped.push(`${daysRange} ${hoursRange}`);
+
+    i++; // Переходим к следующему дню
+  }
+
+  return grouped;
+};
