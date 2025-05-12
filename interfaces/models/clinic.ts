@@ -1,4 +1,5 @@
 import type ITimestamps from "../Timestamps";
+import type IArticle from "./Article";
 import type ICategory from "./Category";
 import type ICity from "./City";
 import type IClinicCategory from "./ClinicCategory";
@@ -8,6 +9,7 @@ import type IClinicWorkTime from "./ClinicWorkTime";
 import type IFavorite from "./Favorite";
 import type IImage from "./Image";
 import type IImageRelat from "./ImageRelat";
+import type IReview from "./Review";
 
 export default interface IClinic extends ITimestamps {
   id: number;
@@ -32,5 +34,9 @@ export default interface IClinic extends ITimestamps {
   icon?: IImage;
   images?: IImageRelat[];
   work_times: IClinicWorkTime[];
+  reviews?: IReview[];
+  articles?: IArticle[];
+  reviews_card?: IReview[];
+  articles_card?: IArticle[];
   my_favorite?: IFavorite;
 }

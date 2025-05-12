@@ -85,7 +85,10 @@ export const groupWorkTimes = (workTimes: IClinicWorkTime[]) => {
     const daysRange =
       `${weekdays[startDayKey]}` +
       (startDayKey !== endDayKey ? `-${weekdays[endDayIndex]}` : "");
-    const hoursRange = `${workTimes[startDayIndex].time_start}-${workTimes[startDayIndex].time_end}`;
+    const hoursRange = `${workTimes[startDayIndex].time_start?.slice(
+      0,
+      5
+    )}-${workTimes[startDayIndex].time_end?.slice(0, 5)}`;
 
     grouped.push(`${daysRange} ${hoursRange}`);
 
