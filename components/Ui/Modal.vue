@@ -30,6 +30,7 @@ const { isOpen, close } = useModal({ name });
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
 
   &::before {
     background: rgba(0, 0, 0, 0.2);

@@ -10,9 +10,7 @@
       </div>
       <VFormComponent :field="password" />
     </div>
-    <UiButton class="auth-form__btn p-2 justify-center w-full" bgColor="blue"
-      >Войти</UiButton
-    >
+    <UiButton class="auth-form__btn p-2 justify-center w-full">Войти</UiButton>
     <div class="text-center text-xs mt-4">
       Еще не зарегестрированы?
       <NuxtLink class="text-ui" :to="ROUTES_NAMES.register"

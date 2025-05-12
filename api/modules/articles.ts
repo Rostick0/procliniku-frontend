@@ -29,6 +29,13 @@ export interface IArticlesMethods {
     data: any;
     params?: Record<string, any>;
   }) => Promise<IArticle & IErrorData>;
+  delete: ({
+    id,
+    params,
+  }: {
+    id: string | number;
+    params?: Record<string, any>;
+  }) => Promise<{ message: string } & IErrorData>;
 }
 
 export default <IArticlesMethods>{
@@ -38,5 +45,6 @@ export default <IArticlesMethods>{
   update: async ({ id, data, params }) =>
     useFetcher().patch(`/articles/${id}`, data, params),
   create: async ({ data }) => useFetcher().post(`/articles`, data),
-  // delete: async ({ id, params }) => useFetcher().delete(`/articles/${id}`, params),
+  delete: async ({ id, params }) =>
+    useFetcher().delete(`/articles/${id}`, params),
 };

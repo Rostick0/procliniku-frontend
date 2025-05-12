@@ -4,14 +4,14 @@
       <tr class="text-left">
         <th class="border-color-ui border-b-2 pr-2">Дата</th>
         <th class="border-color-ui border-l-2 border-b-2 pl-2 py-2">
-          Заголовка
+          Заголовок
         </th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="article in articles" :key="article.id">
         <td class="pr-4">
-          {{ moment(article?.created_at).format('DD.MM.Y') }}
+          {{ moment(article?.created_at).format("DD.MM.Y") }}
         </td>
         <td class="py-2 w-full">
           <div class="flex items-center gap-x-2">
@@ -44,7 +44,7 @@
                 </defs>
               </svg>
             </NuxtLink>
-            <button class="flex">
+            <button @click="(deleteId = article.id), open()" class="flex">
               <svg
                 width="15"
                 height="15"
@@ -78,6 +78,20 @@
       </tr>
     </tbody>
   </table>
+
+  <LazyUiModal :name="nameModalConfirmDelete">
+    <UiModalInner class="py-16 px-4">
+      <div class="">
+        <p class="font-medium text-lg text-center mb-4">
+          Вы дейстивтельно хотите удалить статью?
+        </p>
+        <div class="flex gap-x-2">
+          <UiButton @click="deleteConfirm" bgColor="red">Удалить</UiButton>
+          <UiButton @click="deleteCancel">Отмена</UiButton>
+        </div>
+      </div>
+    </UiModalInner>
+  </LazyUiModal>
 </template>
 
 <script lang="ts" setup>
@@ -86,7 +100,17 @@ import type IArticle from "~/interfaces/models/Article";
 
 interface IProps {
   articles?: IArticle[] | [];
+  getArticles: Function;
 }
 
 const props = defineProps<IProps>();
+
+const nameModalConfirmDelete = "confirm-delete-article";
+const { open, close } = useModal({ name: nameModalConfirmDelete });
+
+const { deleteId, deleteCancel, deleteConfirm } = useDeleteConfirm({
+  apiName: "articles",
+  get: props.getArticles,
+  close,
+});
 </script>

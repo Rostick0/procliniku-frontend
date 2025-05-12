@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 interface IProps {
-  bgColor?: "grey" | null;
+  bgColor?: "grey" | "red";
 }
 
 const props = defineProps<IProps>();

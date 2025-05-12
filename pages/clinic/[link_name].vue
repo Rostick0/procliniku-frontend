@@ -1,6 +1,6 @@
 <template>
   <div class="px-8">
-    <div class="clinic p-5 mt-5 shadow-md">
+    <div class="clinic rounded-lg p-5 mt-5 shadow-md">
       <div class="flex items-start gap-x-2">
         <IconVerification v-if="data?.is_verification" />
         <div class="clinic__title font-semibold text-xl mb-3">
@@ -28,22 +28,45 @@
       <div class="flex gap-x-2.5 mb-6">
         <ClinicInfo :clinic="data" />
         <div class="clinic__raiting flex flex-col grow gap-y-1">
+          {{}}
           <img
             class="w-full"
-            src="/images/default-image.svg"
+            :src="data?.icon?.path_webp ?? '/images/default-image.svg'"
             :alt="data?.name"
           />
           <UiStars :modelValue="data?.rating" />
         </div>
       </div>
-      <div class="mb-8" v-if="data?.description">
+      <div class="mb-4" v-if="data?.description">
         <div class="font-semibold mb-2.5">Информация о клинике</div>
         <div class="">{{ data?.description }}</div>
       </div>
+
       <div class="w-full">
         <UiYandexMap class="h-64" :coords="[data?.longitude, data?.latitude]" />
       </div>
     </div>
+    <!-- <div class="mb-4">
+        <div class="font-semibold mb-2.5">Фотогалерея клиники</div>
+      </div> -->
+    <UiBlock>
+      <template #top>Фотогалерея</template>
+      <template #center>
+        <div class="flex flex-wrap gap-4">
+          <img
+            class="object-cover size-24"
+            v-for="image in data.images"
+            :src="image?.image?.path_webp + '?w=120'"
+            :alt="data.name"
+            width="96"
+            height="96"
+          />
+        </div>
+
+        <!-- {{ data.images }} -->
+      </template>
+      <!-- <template #bottom>Фотогалерея</template> -->
+    </UiBlock>
   </div>
 </template>
 
@@ -58,7 +81,7 @@ const data = await api.clinics
   .showByLinkName({
     link_name: route.params?.link_name as string,
     params: {
-      extends: "work_times,clinic_phones,my_favorite",
+      extends: "work_times,icon,clinic_phones,my_favorite,images.image",
     },
   })
   ?.then((res: { data?: IClinic }) => res?.data);

@@ -19,7 +19,6 @@
     <UiButton
       v-if="!isSendedCode"
       class="auth-form__btn p-2 justify-center w-full"
-      bgColor="blue"
       >Продолжить</UiButton
     >
     <div class="text-center text-xs mt-4">

@@ -14,7 +14,11 @@
       >
         <UiButton>Добавить</UiButton>
       </NuxtLink>
-      <ProfileArticleList v-if="articles?.length" :articles="articles" />
+      <ProfileArticleList
+        v-if="articles?.length"
+        :articles="articles"
+        :getArticles="getArticles"
+      />
       <UiPagination v-model="filters.page" :meta="meta" />
       <div class="flex gap-x-2 items-center justify-center">
         <IconMap width="18" height="18" />
@@ -40,7 +44,11 @@ const { filters } = useFilter<{
   },
 });
 
-const { data: articles, meta } = await useApi<IArticle[]>({
+const {
+  data: articles,
+  get: getArticles,
+  meta,
+} = await useApi<IArticle[]>({
   apiName: "articles",
   apiMethod: "getAll",
   filters,
