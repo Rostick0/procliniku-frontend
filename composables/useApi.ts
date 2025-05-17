@@ -26,6 +26,27 @@ interface iUseApi {
   cacheDataLimit?: number;
 }
 
+interface ILink {
+  url: string | null;
+  label: string;
+  active: boolean;
+}
+
+interface IMeta {
+  current_page: number;
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: ILink[];
+  next_page_url: string | null;
+  path: string;
+  per_page: number;
+  prev_page_url: string | null;
+  to: number;
+  total: number;
+}
+
 export default async <T>({
   apiName,
   apiMethod,
@@ -47,12 +68,12 @@ export default async <T>({
   const data = useState<T | null>(`data-${id}`, () => null);
   const isLoading = useState<boolean | null>(`loading-${id}`, () => null);
   const error = useState(`error-${id}`, () => false);
-  const meta = useState(`meta-${id}`, () => []);
+  const meta = useState<IMeta>(`meta-${id}`);
   const cache = useState<
     {
       params: string;
       data: T;
-      // meta: any;
+      meta: IMeta;
     }[]
   >(`cache-${id}`, () => []);
 
@@ -83,7 +104,7 @@ export default async <T>({
 
         if (cacheValue) {
           data.value = cacheValue.data;
-          // meta.value = cacheValue.meta;
+          meta.value = cacheValue.meta;
           return;
         }
       }
@@ -106,7 +127,7 @@ export default async <T>({
               {
                 params: JSON.stringify(preParams),
                 data: dataLocal,
-                // meta: other,
+                meta: other,
               },
             ];
           }

@@ -4,10 +4,12 @@
     :to="ROUTES_NAMES.article(article.id)"
   >
     <div class="font-medium grow">{{ article.id }}</div>
-    <div class="rounded-xs text-xs p-1">
+    <time
+      class="rounded-xs text-xs p-1"
+      :datetime="article.created_at?.toString()"
+    >
       {{ moment(article.created_at).format("DD MMM HH:mm:ss") }}
-    </div>
-    <!-- {{ article }} -->
+    </time>
   </NuxtLink>
 </template>
 

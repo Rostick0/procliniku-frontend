@@ -8,6 +8,7 @@ import emailCode from "./modules/emailCode";
 import favorites from "./modules/favorites";
 import images from "./modules/images";
 import regions from "./modules/regions";
+import reviews from "./modules/reviews";
 import serviceCategories from "./modules/serviceCategories";
 import services from "./modules/services";
 import users from "./modules/users";
@@ -36,6 +37,7 @@ const api = {
   clinics,
   clinicWorker,
   regions,
+  reviews,
   emailCode,
   favorites,
   images,

@@ -1,14 +1,14 @@
 <template>
   <div class="px-8" v-if="clinic">
     <ClinicItem class="mb-8" :clinic="clinic" />
-    <ArticleList v-if="articles?.length" :articles="articles" />
-    <UiPagination v-model="filters.page" :meta="metaArticles" />
+    <ReviewList v-if="reviews?.length" :reviews="reviews" />
+    <UiPagination v-model="filters.page" :meta="metaReviews" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import type IArticle from "~/interfaces/models/Article";
 import type IClinic from "~/interfaces/models/Clinic";
+import type IReview from "~/interfaces/models/Review";
 
 const route = useRoute();
 
@@ -27,19 +27,20 @@ const { filters } = useFilter<initialFiltersItem>({
 });
 
 const {
-  data: articles,
-  get: getArticles,
-  meta: metaArticles,
-} = await useApi<IArticle[]>({
-  apiName: "articles",
+  data: reviews,
+  get: getReviews,
+  meta: metaReviews,
+} = await useApi<IReview[]>({
+  apiName: "reviews",
   apiMethod: "getAll",
   filters,
   params: {
     "filterEQ[clinic.link_name]": route.params?.link_name,
+    extends: "user",
   },
 });
 
-await Promise.all([getClinic(), getArticles()]);
+await Promise.all([getClinic(), getReviews()]);
 
 if (!clinic.value)
   throw createError({

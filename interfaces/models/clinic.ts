@@ -36,7 +36,5 @@ export default interface IClinic extends ITimestamps {
   work_times: IClinicWorkTime[];
   reviews?: IReview[];
   articles?: IArticle[];
-  reviews_card?: IReview[];
-  articles_card?: IArticle[];
   my_favorite?: IFavorite;
 }
