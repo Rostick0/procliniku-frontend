@@ -10,7 +10,7 @@ interface iUseApi {
   // name: `${keyof typeof users}`;
   // ${keyof apiNames}.
   apiName: apiNames;
-  apiMethod: "get" | "getAll";
+  apiMethod: "get" | "getAll" | any;
   params?: object;
   filters?: globalThis.Ref<initialFiltersItem>;
   //   unwatchedFilters = {},
@@ -88,6 +88,7 @@ export default async <T>({
         }
       }
 
+      // console.log(apiMethod, isLoading.value);
       if (isLoading.value === false) return;
       isLoading.value = false;
 

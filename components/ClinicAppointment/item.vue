@@ -6,7 +6,7 @@
     >
       <img
         class=""
-        :src="clinic?.image ?? '/images/default-image.svg'"
+        :src="clinic?.icon?.path_webp ?? '/images/default-image.svg'"
         :alt="clinic?.name"
         width="60"
         height="60"

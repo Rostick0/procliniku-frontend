@@ -1,6 +1,9 @@
 export const ROUTES_NAMES = {
   cities: "/cities",
   clinic: "/clinic",
+  articles_clinic: (clinicLinkName: string) =>
+    `/clinic/${clinicLinkName}/articles`,
+  article: (id: number) => `/articles/${id}`,
   profile: "/profile",
   profile_edit: "/profile/edit",
   profile_favorites: "/profile/favorites",

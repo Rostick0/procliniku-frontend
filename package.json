@@ -10,13 +10,6 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@capacitor/android": "7.0.1",
-    "@capacitor/app": "7.0.0",
-    "@capacitor/cli": "7.0.1",
-    "@capacitor/core": "7.0.1",
-    "@capacitor/haptics": "7.0.0",
-    "@capacitor/keyboard": "7.0.0",
-    "@capacitor/status-bar": "7.0.0",
     "@ckeditor/ckeditor5-build-classic": "^41.4.2",
     "@ckeditor/ckeditor5-core": "^45.0.0",
     "@ckeditor/ckeditor5-vue": "^7.3.0",

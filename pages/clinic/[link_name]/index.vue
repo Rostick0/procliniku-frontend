@@ -71,16 +71,16 @@
         <div class="flex flex-col gap-4">
           <div class="" v-for="review in data?.reviews_card">
             <div class="flex flex-wrap items-start mb-2">
-              <div class="grow">{{ review.user?.name }}</div>
+              <div class="font-medium grow">{{ review.user?.name }}</div>
               <UiStars :modelValue="review.rating" />
             </div>
-            <div class="">{{ review.text }}</div>
+            <div class="text-sm">{{ review.text }}</div>
           </div>
         </div>
       </template>
     </UiBlock>
     <UiBlock class="mt-5" v-if="data?.articles_card?.length">
-      <template #top>Отзывы пациентов</template>
+      <template #top>Статьи</template>
       <template #center>
         <div class="flex flex-col gap-y-2">
           <div
@@ -92,7 +92,10 @@
         </div>
       </template>
       <template #bottom>
-        <NuxtLink class="block mt-12" :to="ROUTES_NAMES">
+        <NuxtLink
+          class="block mt-12"
+          :to="ROUTES_NAMES.articles_clinic(data.link_name)"
+        >
           <UiButton>Смотреть больше</UiButton>
         </NuxtLink>
       </template>
