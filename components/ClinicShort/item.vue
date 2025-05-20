@@ -6,7 +6,7 @@
     >
       <img
         class=""
-        :src="clinic?.image ?? '/images/default-image.svg'"
+        :src="clinic?.icon?.path ?? '/images/default-image.svg'"
         :alt="clinic?.name"
         width="60"
         height="60"
@@ -50,7 +50,8 @@ const props = defineProps<IProps>();
 
   &__image {
     width: 20vw;
-    height: 20vw;
+    max-width: 160px;
+    height: 100%;
 
     img {
       width: 100%;

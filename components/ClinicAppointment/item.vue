@@ -12,7 +12,7 @@
         height="60"
       />
     </NuxtLink>
-    <div class="">
+    <div class="flex flex-col">
       <NuxtLink
         class="block font-semibold mb-3"
         :to="`${ROUTES_NAMES.clinic}/${clinic?.link_name}`"
@@ -33,7 +33,7 @@
       <div class="text-sm mt-2">
         {{ service?.service_category?.name + " " + service?.name }}
       </div>
-      <div class="font-bold ui text-sm mt-0.5">
+      <div class="font-bold ui text-sm mt-auto">
         {{ moment(date).format("DD MMM HH:mm:ss") }}
       </div>
     </div>
@@ -60,7 +60,8 @@ const props = defineProps<IProps>();
 
   &__image {
     width: 20vw;
-    height: 20vw;
+    max-width: 160px;
+    height: 100%;
 
     img {
       width: 100%;

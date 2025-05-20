@@ -38,7 +38,7 @@ const props = defineProps<IProps>();
 
 <style lang="scss" scopedc>
 .clinic__info {
-  font-size: 11px;
+  font-size: 12px;
   overflow-wrap: break-word;
   overflow-wrap: anywhere;
 }
