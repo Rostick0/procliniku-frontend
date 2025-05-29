@@ -3,7 +3,7 @@
     <div class="profile shadow-md p-3">
       <ProfileTop />
       <ProfileBack :to="ROUTES_NAMES.clinic_profile_cnc">Настройки</ProfileBack>
-      <div class="grid gap-y-6 mt-6 mb-4">
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6 mb-4">
         <NuxtLink v-for="item in menu" :key="item.name" :to="item.link">
           <UiButton class="py-3">{{ item.name }}</UiButton>
         </NuxtLink>

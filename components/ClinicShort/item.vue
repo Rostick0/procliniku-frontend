@@ -50,7 +50,7 @@ const props = defineProps<IProps>();
 
   &__image {
     width: 20vw;
-    max-width: 160px;
+    max-width: 120px;
     height: 100%;
 
     img {

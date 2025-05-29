@@ -8,7 +8,10 @@
     <div class="flex gap-x-1.5 items-start mb-4">
       <ClinicInfo class="clinic__info" :clinic="clinic" />
       <div class="grow">
-        <UiYandexMap :coords="[clinic?.latitude, clinic?.longitude]" />
+        <UiYandexMap
+          class="clinic__yandex-map"
+          :coords="[clinic?.latitude, clinic?.longitude]"
+        />
       </div>
     </div>
     <NuxtLink class="flex" :to="`${ROUTES_NAMES.clinic}/${clinic?.link_name}`">
@@ -34,8 +37,17 @@ const props = defineProps<IProps>();
     border-bottom: 1px solid var(--ui-color);
   }
 
-  &__info {
-    width: 36.6vw;
+  &__yandex-map {
+    margin-left: auto;
+    width: 12vw;
+
+    @media (max-width: 1279px) {
+      width: 20vw;
+    }
+
+    @media (max-width: 767px) {
+      width: calc(30vw + 50px);
+    }
   }
 }
 </style>

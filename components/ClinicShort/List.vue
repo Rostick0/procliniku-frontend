@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-y-6">
+  <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
     <ClinicShortItem
       v-for="clinic in clinics"
       :key="clinic?.id"

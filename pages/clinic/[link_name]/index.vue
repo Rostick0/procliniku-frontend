@@ -30,7 +30,7 @@
         <div class="clinic__raiting flex flex-col grow gap-y-1">
           <div class="pt-[112%] relative w-full">
             <img
-              class="object-cover absolute top-0 w-full h-full"
+              class="object-contain absolute top-0 w-full h-full"
               :src="clinic?.icon?.path_webp ?? '/images/default-image.svg'"
               :alt="clinic?.name"
             />
@@ -56,7 +56,7 @@
       <template #center>
         <div class="flex flex-wrap gap-4">
           <img
-            class="object-cover size-24"
+            class="object-contain size-24"
             v-for="image in clinic.images"
             :src="image?.image?.path_webp + '?w=120'"
             :alt="clinic.name"
@@ -200,7 +200,7 @@ useSeoMeta({
   &__raiting {
     margin-left: auto;
     width: 25vw;
-    max-width: 160px;
+    max-width: 120px;
   }
 }
 </style>

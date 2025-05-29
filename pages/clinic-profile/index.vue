@@ -8,7 +8,7 @@
       >
         <UiButton>Панель управления ЛПУ</UiButton>
       </NuxtLink>
-      <div class="grid gap-y-6 mb-4">
+      <div class="grid sm:grid-cols-2 gap-6 mb-4">
         <ProfileInfo
           title="Личные данные"
           :link="ROUTES_NAMES.profile_favorites"

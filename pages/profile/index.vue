@@ -28,7 +28,7 @@
           <div class="text-sm">{{ user?.email }}</div>
         </div>
       </div>
-      <div class="grid gap-y-6 mb-4">
+      <div class="grid sm:grid-cols-2 gap-6 mb-4">
         <ProfileInfoWithList
           :count="favorites?.total"
           title="Любимые клиники"
