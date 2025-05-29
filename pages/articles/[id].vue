@@ -1,5 +1,5 @@
 <template>
-  <div class="px-8" v-if="article">
+  <div class="container" v-if="article">
     <h1 class="text-lg font-bold mb-0.5">{{ article?.title }}</h1>
     <time
       class="block text-xs mb-4 opacity-50"

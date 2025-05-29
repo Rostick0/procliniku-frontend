@@ -1,49 +1,55 @@
 <template>
   <div class="wrapper flex flex-col min-h-screen">
-    <header class="header flex items-center justify-between px-8 pt-6 pb-11">
-      <NuxtLink class="flex" :to="ROUTES_NAMES.main">
-        <IconLogo />
-      </NuxtLink>
-      <div class="flex gap-x-4">
-        <NuxtLink class="flex" :to="ROUTES_NAMES.profile">
-          <IconProfile />
-        </NuxtLink>
-        <button class="flex" @click="openMenu">
-          <IconBurger />
-        </button>
+    <header class="header">
+      <div class="container">
+        <div class="flex items-center justify-between pt-6 pb-11">
+          <NuxtLink class="flex" :to="ROUTES_NAMES.main">
+            <IconLogo />
+          </NuxtLink>
+          <div class="flex gap-x-4">
+            <NuxtLink class="flex" :to="ROUTES_NAMES.profile">
+              <IconProfile />
+            </NuxtLink>
+            <button class="flex" @click="openMenu">
+              <IconBurger />
+            </button>
+          </div>
+        </div>
       </div>
     </header>
     <main class="main grow">
       <slot />
     </main>
-    <footer class="footer font-semibold text-sm px-8 pt-5 pb-4 mt-8">
-      <div class="opacity-60">
-        <div class="flex gap-x-12 mb-12">
-          <div class="footer-menu__item">
-            <div class="text-base">ПроКлинику</div>
-            <button class="flex" @click="openContacts">Контакты</button>
-            <NuxtLink :to="ROUTES_NAMES.about">О сервисе</NuxtLink>
-            <NuxtLink :to="ROUTES_NAMES.regions">Регионы</NuxtLink>
-            <NuxtLink :to="ROUTES_NAMES.cities">Города</NuxtLink>
-            <span @click="openSocial" role="button">Соцсети</span>
-            <NuxtLink>Тарифы</NuxtLink>
+    <footer class="footer font-semibold text-sm pt-5 pb-4 mt-8">
+      <div class="container">
+        <div class="opacity-60">
+          <div class="flex gap-x-12 mb-12">
+            <div class="footer-menu__item">
+              <div class="text-base">ПроКлинику</div>
+              <button class="flex" @click="openContacts">Контакты</button>
+              <NuxtLink :to="ROUTES_NAMES.about">О сервисе</NuxtLink>
+              <NuxtLink :to="ROUTES_NAMES.regions">Регионы</NuxtLink>
+              <NuxtLink :to="ROUTES_NAMES.cities">Города</NuxtLink>
+              <span @click="openSocial" role="button">Соцсети</span>
+              <NuxtLink>Тарифы</NuxtLink>
+            </div>
+            <div class="footer-menu__item">
+              <div class="text-base">Условия использования</div>
+              <NuxtLink :to="ROUTES_NAMES.offer">Оферта для юр.лиц</NuxtLink>
+              <NuxtLink :to="ROUTES_NAMES.offer">Оферта для физ.лиц</NuxtLink>
+              <NuxtLink :to="ROUTES_NAMES.offer"
+                >Обработка персональных данных</NuxtLink
+              >
+              <NuxtLink class="mt-auto">© 2021 ПроКлинику</NuxtLink>
+            </div>
           </div>
-          <div class="footer-menu__item">
-            <div class="text-base">Условия использования</div>
-            <NuxtLink :to="ROUTES_NAMES.offer">Оферта для юр.лиц</NuxtLink>
-            <NuxtLink :to="ROUTES_NAMES.offer">Оферта для физ.лиц</NuxtLink>
-            <NuxtLink :to="ROUTES_NAMES.offer"
-              >Обработка персональных данных</NuxtLink
-            >
-            <NuxtLink class="mt-auto">© 2021 ПроКлинику</NuxtLink>
+          <div class="">
+            Информация, представленная на сайте, не может быть использована для
+            постановки диагноза, назначения лечения и не заменяет прием врача.
+            <br />
+            <br />
+            Номер в Едином Реестре российского ПО: 20472
           </div>
-        </div>
-        <div class="">
-          Информация, представленная на сайте, не может быть использована для
-          постановки диагноза, назначения лечения и не заменяет прием врача.
-          <br />
-          <br />
-          Номер в Едином Реестре российского ПО: 20472
         </div>
       </div>
     </footer>

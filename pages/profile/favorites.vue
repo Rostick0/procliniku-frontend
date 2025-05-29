@@ -1,5 +1,6 @@
 <template>
-  <div class="px-8">
+  <div class="container">
+    <h2 class="text-xl font-semibold mb-4">Ваши любимые клиники</h2>
     <ClinicShortList class="mb-4" :clinics="clinics" />
     <UiPagination v-model="filters.page" :meta="meta" />
   </div>
@@ -33,4 +34,8 @@ const { data, meta } = await useApi<IFavorite[]>({
 const clinics = computed(
   () => data.value?.map((item) => item?.clinic) as IClinic[]
 );
+
+useSeoMeta({
+  title: "Избранные клиники"
+});
 </script>

@@ -1,5 +1,6 @@
 <template>
-  <div class="px-8">
+  <div class="container">
+    <h2 class="text-xl font-semibold mb-4">Ваши будущие записи в клиники</h2>
     <ClinicAppointmentList class="mb-4" :appointments="data" />
     <UiPagination v-model="filters.page" :meta="meta" />
   </div>
@@ -34,5 +35,9 @@ const { data, meta } = await useApi<IAppointment[]>({
     sort: "-date",
   },
   init: true,
+});
+
+useSeoMeta({
+  title: "Будущие записи",
 });
 </script>

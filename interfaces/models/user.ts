@@ -14,11 +14,20 @@ export interface IRegister {
   code: string | number;
 }
 
-enum UserRole {
-  admin = "admin",
-  owner = "owner",
-  client = "client",
-}
+export const USER_ROLE = {
+  admin: "admin",
+  owner: "owner",
+  worker: "worker",
+  client: "client",
+};
+
+type UserRole = keyof typeof USER_ROLE;
+
+// enum UserRole {
+//   admin = "admin",
+//   owner = "owner",
+//   client = "client",
+// }
 
 export default interface IUser extends ITimestamps {
   id: number;
@@ -27,5 +36,5 @@ export default interface IUser extends ITimestamps {
   phone: string;
   password: string;
   birthdate: Date;
-  role: typeof UserRole;
+  role: UserRole;
 }

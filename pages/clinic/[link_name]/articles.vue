@@ -1,5 +1,5 @@
 <template>
-  <div class="px-8" v-if="clinic">
+  <div class="container" v-if="clinic">
     <ClinicItem class="mb-8" :clinic="clinic" />
     <ArticleList v-if="articles?.length" :articles="articles" />
     <UiPagination v-model="filters.page" :meta="metaArticles" />

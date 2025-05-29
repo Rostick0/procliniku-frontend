@@ -1,5 +1,5 @@
 <template>
-  <div class="px-8" v-if="clinic">
+  <div class="container" v-if="clinic">
     <div class="clinic rounded-lg p-5 mt-5 shadow-md">
       <div class="flex items-start gap-x-2">
         <IconVerification v-if="clinic?.is_verification" />

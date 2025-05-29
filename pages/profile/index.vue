@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2">
+  <div class="container">
     <div class="profile shadow-md p-3">
       <div class="profile__top flex gap-x-2 pb-3 mb-8">
         <div class="shrink-0">
@@ -28,6 +28,13 @@
           <div class="text-sm">{{ user?.email }}</div>
         </div>
       </div>
+      <NuxtLink
+        v-if="![USER_ROLE.owner, USER_ROLE.worker].includes(user.role)"
+        class="flex max-w-72 w-full mx-auto mb-4"
+        :to="ROUTES_NAMES.clinic_profile"
+      >
+        <UiButton>Войти в вашу клинику</UiButton>
+      </NuxtLink>
       <div class="grid sm:grid-cols-2 gap-6 mb-4">
         <ProfileInfoWithList
           :count="favorites?.total"
@@ -60,6 +67,7 @@
 import moment from "moment";
 import api from "~/api";
 import type IUser from "~/interfaces/models/User";
+import { USER_ROLE } from "~/interfaces/models/User";
 
 const user = useState<IUser>("user");
 

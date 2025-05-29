@@ -1,5 +1,5 @@
 <template>
-  <div class="px-8">
+  <div class="container">
     <div class="font-medium text-ui-2 mb-3">
       Лечебные учреждения города {{ city?.name }}
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="px-8">
+  <div class="container">
     <h1 class="font-medium text-ui-2 mb-3">ДОГОВОР-ОФЕРТА С ФИЗ. ЛИЦОМ</h1>
     <p class="mb-2">
       Настоящее Соглашение заключается между ООО «ЭНВД» (далее – Владелец) и

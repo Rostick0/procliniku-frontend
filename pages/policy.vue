@@ -1,5 +1,5 @@
 <template>
-  <div class="px-8"></div>
+  <div class="container"></div>
 </template>
 
 <script lang="ts" setup>

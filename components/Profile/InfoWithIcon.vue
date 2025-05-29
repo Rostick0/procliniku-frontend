@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    class="profile-info flex items-center rounded-md shadow-md text-center px-8 py-2"
+    class="profile-info flex items-center rounded-md shadow-md text-center container py-2"
     :to="link"
   >
     <div class="flex justify-center">

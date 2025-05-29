@@ -1,5 +1,6 @@
 <template>
-  <div class="px-8">
+  <div class="container">
+    <h2 class="text-xl font-semibold mb-4">Ваши прошедшие посещения клиник</h2>
     <ClinicAppointmentList class="mb-4" :appointments="data" />
     <UiPagination v-model="filters.page" :meta="meta" />
   </div>
@@ -7,9 +8,7 @@
 
 <script lang="ts" setup>
 import moment from "moment";
-import api from "~/api";
 import type IAppointment from "~/interfaces/models/Appointment";
-import type IClinic from "~/interfaces/models/Clinic";
 import type IUser from "~/interfaces/models/User";
 
 const user = useState<IUser>("user");
@@ -34,5 +33,9 @@ const { data, meta } = await useApi<IAppointment[]>({
     sort: "date",
   },
   init: true,
+});
+
+useSeoMeta({
+  title: "Прошлые посещения",
 });
 </script>

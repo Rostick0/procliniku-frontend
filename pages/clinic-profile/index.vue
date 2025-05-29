@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2">
+  <div class="container">
     <div class="profile shadow-md p-3">
       <ProfileTop />
       <NuxtLink
