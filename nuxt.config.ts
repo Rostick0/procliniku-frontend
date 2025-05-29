@@ -18,6 +18,27 @@ export default defineNuxtConfig({
           rel: "manifest",
           href: "/manifest.json",
         },
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/favicons/favicon-96x96.png",
+          sizes: "96x96",
+        },
+        {
+          rel: "icon",
+          type: "image/svg+xml",
+          href: "/favicons/favicon.svg",
+        },
+        {
+          rel: "shortcut icon",
+          href: "/favicons/favicon.ico",
+        },
+        {
+          rel: "apple-touch-icon",
+          type: "image/png",
+          href: "/favicons/apple-touch-icon.png",
+          sizes: "180x180",
+        },
       ],
     },
   },

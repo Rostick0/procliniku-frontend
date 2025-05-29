@@ -24,7 +24,7 @@
     <div class="text-center text-xs mt-4">
       Уже есть аккаунт?
       <NuxtLink class="text-ui" :to="ROUTES_NAMES.login"
-        >войти в аккаунт</NuxtLink
+        >Войти в аккаунт</NuxtLink
       >
     </div>
   </form>

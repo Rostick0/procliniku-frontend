@@ -29,7 +29,7 @@
         </div>
       </div>
       <NuxtLink
-        v-if="![USER_ROLE.owner, USER_ROLE.worker].includes(user.role)"
+        v-if="[USER_ROLE.owner, USER_ROLE.worker].includes(user.role)"
         class="flex max-w-72 w-full mx-auto mb-4"
         :to="ROUTES_NAMES.clinic_profile"
       >
