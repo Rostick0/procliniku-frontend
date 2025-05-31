@@ -4,7 +4,7 @@
       <div
         @click="handleClick(item)"
         class="star flex"
-        :class="[{ active: modelValue >= item }, item]"
+        :class="[{ active: modelValue >= item }, item, classStar]"
       >
         <svg
           width="16"
@@ -15,7 +15,7 @@
         >
           <defs v-if="1 > modelValue - item + 1 > 0">
             <linearGradient
-              :id="`grad${item}`"
+              :id="`grad${item + unicId}`"
               x1="0%"
               y1="0%"
               x2="100%"
@@ -36,9 +36,8 @@
           <path
             d="M8 0L9.79611 6.21885H15.6085L10.9062 10.0623L12.7023 16.2812L8 12.4377L3.29772 16.2812L5.09383 10.0623L0.391548 6.21885H6.20389L8 0Z"
             stroke=""
-            :fill="`url(#grad${item})`"
+            :fill="`url(#grad${item + unicId})`"
           />
-       
         </svg>
       </div>
     </template>
@@ -46,13 +45,21 @@
 </template>
 
 <script setup>
+const unicId = useId();
+
 defineComponent({
   inheritAttrs: false,
 });
 
 const emits = defineEmits(["update:modelValue"]);
 
-defineProps(["modelValue"]);
+defineProps({
+  modelValue: String | Number,
+  classStar: {
+    type: String,
+    default: "",
+  },
+});
 
 const handleClick = (item) => {
   emits("update:modelValue", item);

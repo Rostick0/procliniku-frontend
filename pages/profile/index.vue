@@ -110,6 +110,10 @@ const appointmentPastData = await appointmentPast?.data?.map((item) => ({
   name: item?.clinic?.name,
 }));
 
+useSeoMeta({
+  title: "Профиль",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });

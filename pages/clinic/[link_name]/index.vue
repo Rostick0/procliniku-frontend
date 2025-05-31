@@ -46,7 +46,7 @@
       <div class="w-full">
         <UiYandexMap
           class="h-64"
-          :coords="[clinic?.longitude, clinic?.latitude]"
+          :coords="[clinic?.latitude, clinic?.longitude]"
         />
       </div>
     </div>
@@ -67,15 +67,36 @@
       </template>
     </UiBlock>
 
-    <UiBlock class="mt-5" v-if="reviews?.length">
+    <UiBlock class="mt-5">
       <template #top>Отзывы пациентов</template>
       <template #center>
-        <div class="flex flex-col gap-4">
+        <div class="mb-4" v-if="myReview && !isAddMark">
+          <div class="font-bold mb-2">Мой отзыв</div>
+          <ReviewItem :review="{ ...myReview, user }" />
+        </div>
+        <UiButton v-if="!isAddMark" @click="isAddMark = true"
+          >{{ myReview ? "Изменить" : "Добавить" }} отзыв</UiButton
+        >
+        <ReviewForm
+          v-else
+          @sended="(review) => ((myReview = review), (isAddMark = false))"
+          :review="myReview"
+          :clinic="clinic"
+        />
+
+        <div class="flex flex-col gap-4" v-if="reviews?.length">
+          <br />
           <ReviewItem
             v-for="review in reviews"
             :key="review.id"
             :review="review"
           />
+        </div>
+        <div
+          class="flex items-center justify-center h-16"
+          v-else-if="!myReview"
+        >
+          Отзывов отсуствуют
         </div>
       </template>
       <template v-if="metaReviews && metaReviews?.total > 3" #bottom>
@@ -119,15 +140,20 @@ import api from "~/api";
 import type IArticle from "~/interfaces/models/Article";
 import type IClinic from "~/interfaces/models/Clinic";
 import type IReview from "~/interfaces/models/Review";
+import type IUser from "~/interfaces/models/User";
 
 const route = useRoute();
 const requestUrl = useRequestURL();
+
+const user = useState<IUser>("user");
+
+const isAddMark = ref<boolean>(false);
 
 const { data: clinic, get: getClinic } = await useApi<IClinic>({
   apiName: "clinics",
   apiMethod: "showByLinkName",
   params: {
-    extends: "work_times,icon,clinic_phones,my_favorite,images.image",
+    extends: "work_times,icon,clinic_phones,my_favorite,my_review,images.image",
   },
   requestParams: {
     link_name: route.params?.link_name as string,
@@ -155,12 +181,14 @@ const {
   apiMethod: "getAll",
   params: {
     "filterEQ[clinic.link_name]": route.params?.link_name,
+    "filterNEQ[user_id]": user.value.id,
     extends: "user",
   },
 });
 
 await Promise.all([getClinic(), getArticles(), getReviews()]);
 
+const myReview = ref<IReview | undefined>(clinic.value?.my_review);
 const isFavorite = ref<boolean>(!!clinic.value?.my_favorite);
 
 if (!clinic.value)

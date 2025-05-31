@@ -70,22 +70,28 @@
       :error-message="errorMessage"
     /> -->
 
-    <VFormCkeditor
+    <LazyVFormCkeditor
       v-else-if="field.type == 'ckeditor'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"
     />
 
-    <VFormRecaptcha
+    <LazyVFormRecaptcha
       v-else-if="field.type == 'recaptcha'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"
     />
 
-    <VFormYandexMap
+    <LazyVFormYandexMap
       v-else-if="field.type == 'yandex-map'"
+      v-model="model"
+      v-bind="field.bind"
+      :error-message="errorMessage"
+    />
+    <LazyVFormStars
+      v-else-if="field.type === 'stars'"
       v-model="model"
       v-bind="field.bind"
       :error-message="errorMessage"

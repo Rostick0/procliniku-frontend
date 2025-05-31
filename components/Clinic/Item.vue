@@ -1,6 +1,10 @@
 <template>
-  <div class="clinic p-5 shadow-md">
-    <div class="clinic__title font-bold text-sm mb-3">{{ clinic?.name }}</div>
+  <div class="clinic flex flex-col p-5 shadow-md">
+    <NuxtLink
+      class="clinic__title font-bold text-sm mb-3"
+      :to="`${ROUTES_NAMES.clinic}/${clinic?.link_name}`"
+      >{{ clinic?.name }}</NuxtLink
+    >
     <div class="flex items-center gap-x-1.5 text-ui text-xs mb-4">
       <IconList />
       <span>{{ clinic?.main_category?.name }}</span>
@@ -14,7 +18,10 @@
         />
       </div>
     </div>
-    <NuxtLink class="flex" :to="`${ROUTES_NAMES.clinic}/${clinic?.link_name}`">
+    <NuxtLink
+      class="flex mt-auto"
+      :to="`${ROUTES_NAMES.clinic}/${clinic?.link_name}`"
+    >
       <UiButton>Узнать больше</UiButton>
     </NuxtLink>
   </div>
@@ -35,6 +42,7 @@ const props = defineProps<IProps>();
 
   &__title {
     border-bottom: 1px solid var(--ui-color);
+    display: block;
   }
 
   &__yandex-map {

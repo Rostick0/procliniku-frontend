@@ -34,6 +34,10 @@
 </template>
 
 <script lang="ts" setup>
+useSeoMeta({
+  title: "Добавление клиники",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });

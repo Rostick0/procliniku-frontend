@@ -20,9 +20,12 @@
     </div>
     <div class="flex items-center gap-x-3">
       <IconGlobe class="shrink-0" />
-      <a class="font-medium text-ui" target="_blank" :href="clinic?.link">{{
-        clinic?.link
-      }}</a>
+      <NuxtLink
+        class="font-medium text-ui"
+        target="_blank"
+        :href="clinic?.link"
+        >{{ clinic?.link }}</NuxtLink
+      >
     </div>
   </div>
 </template>

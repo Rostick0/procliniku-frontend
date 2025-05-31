@@ -37,4 +37,5 @@ export default interface IClinic extends ITimestamps {
   reviews?: IReview[];
   articles?: IArticle[];
   my_favorite?: IFavorite;
+  my_review?: IReview;
 }

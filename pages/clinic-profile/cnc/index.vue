@@ -89,7 +89,7 @@
 </template>
 
 <script lang="ts" setup>
-useHead({
+useSeoMeta({
   title: "Рабочий стол",
 });
 
