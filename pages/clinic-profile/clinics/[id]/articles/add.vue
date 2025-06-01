@@ -38,7 +38,7 @@ const user = useState<IUser>("user");
 //   ?.then((res) => res?.data);
 
 useSeoMeta({
-  title: "Статьи клиники",
+  title: "Добавление статьи клиники",
 });
 
 definePageMeta({
