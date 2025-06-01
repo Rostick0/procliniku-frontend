@@ -181,7 +181,7 @@ const {
   apiMethod: "getAll",
   params: {
     "filterEQ[clinic.link_name]": route.params?.link_name,
-    "filterNEQ[user_id]": user.value.id,
+    "filterNEQ[user_id]": user.value?.id,
     extends: "user",
   },
 });
