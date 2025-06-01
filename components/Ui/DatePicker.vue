@@ -6,6 +6,7 @@
     :format="format"
     @update:model-value="handleInput"
     :modelValue="modelValue"
+    locale="ru-RU"
   />
 </template>
 

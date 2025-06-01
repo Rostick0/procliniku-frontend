@@ -29,7 +29,9 @@
           В случае вопросов можно ознакомиться с разделом Помощи, обратиться с
           вопросом в Техподдержку (для зарегистрированных клиник), в чат
           телеграмм канала ПроКлинику или на почту
-          <a href="mailto:support@procliniku">support@procliniku</a>.
+          <a class="text-ui" href="mailto:support@procliniku"
+            >support@procliniku</a
+          >.
         </p>
         <!-- <h3 class="font-medium mb-1">Добавление клиники</h3>
         <ol class="list-decimal pl-4">
@@ -48,9 +50,6 @@
         <div class="">
           <UiButton class="px-3" @click="$router.back()">Назад</UiButton>
         </div>
-        <a class="" href="https://procliniku.ru/" target="_blank" external>
-          <UiButton class="px-3">Перейти на сайт</UiButton>
-        </a>
       </div>
     </div>
   </div>

@@ -29,11 +29,15 @@
         </div>
       </div>
       <NuxtLink
-        v-if="[USER_ROLE.owner, USER_ROLE.worker].includes(user.role)"
+        v-if="
+          [USER_ROLE.owner, USER_ROLE.worker, USER_ROLE.admin].includes(
+            user.role
+          )
+        "
         class="flex max-w-72 w-full mx-auto mb-4"
         :to="ROUTES_NAMES.clinic_profile"
       >
-        <UiButton>Войти в вашу клинику</UiButton>
+        <UiButton>Войти в профиль клиники</UiButton>
       </NuxtLink>
       <div class="grid sm:grid-cols-2 gap-6 mb-4">
         <ProfileInfoWithList
