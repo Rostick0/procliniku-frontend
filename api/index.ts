@@ -11,6 +11,7 @@ import regions from "./modules/regions";
 import reviews from "./modules/reviews";
 import serviceCategories from "./modules/serviceCategories";
 import services from "./modules/services";
+import userProfile from "./modules/userProfile";
 import users from "./modules/users";
 
 interface apiMethods {
@@ -43,6 +44,7 @@ const api = {
   images,
   serviceCategories,
   services,
+  userProfile,
   users,
 };
 

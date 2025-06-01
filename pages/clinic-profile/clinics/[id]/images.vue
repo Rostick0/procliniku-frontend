@@ -7,6 +7,10 @@
 </template>
 
 <script lang="ts" setup>
+useSeoMeta({
+  title: "Фотогалерея клиники",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });

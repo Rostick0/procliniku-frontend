@@ -1,12 +1,10 @@
 <template>
-  <div class="inline-flex items-center gap-x-4">
-    <NuxtLink class="flex" :to="to">
-      <IconArrow />
-    </NuxtLink>
+  <NuxtLink class="inline-flex items-center gap-x-4" :to="to">
+    <IconArrow />
     <span class="font-medium text-lg">
       <slot />
     </span>
-  </div>
+  </NuxtLink>
 </template>
 
 <script lang="ts" setup>

@@ -35,6 +35,10 @@ const article = await api.articles
   })
   ?.then((res) => res?.data);
 
+useSeoMeta({
+  title: "Редактирование статьи клиники",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });

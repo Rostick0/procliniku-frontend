@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h2 class="text-xl font-semibold mb-4">Ваши будущие записи в клиники</h2>
+    <h2 class="text-xl font-semibold mb-3">Ваши будущие записи в клиники</h2>
+    <ProfileBack class="mb-4" :to="ROUTES_NAMES.profile">Назад</ProfileBack>
     <ClinicAppointmentList class="mb-4" :appointments="data" />
     <UiPagination v-model="filters.page" :meta="meta" />
   </div>

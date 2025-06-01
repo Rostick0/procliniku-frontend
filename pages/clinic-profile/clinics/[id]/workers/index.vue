@@ -50,6 +50,10 @@ const { data: clinicWorkers, meta } = await useApi<IClinicWorker[]>({
   init: true,
 });
 
+useSeoMeta({
+  title: "Работники клиники",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });

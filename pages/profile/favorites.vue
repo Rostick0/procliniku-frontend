@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h2 class="text-xl font-semibold mb-4">Ваши любимые клиники</h2>
+    <h2 class="text-xl font-semibold mb-3">Ваши любимые клиники</h2>
+    <ProfileBack class="mb-4" :to="ROUTES_NAMES.profile">Назад</ProfileBack>
     <ClinicShortList class="mb-4" :clinics="clinics" />
     <UiPagination v-model="filters.page" :meta="meta" />
   </div>
@@ -36,6 +37,6 @@ const clinics = computed(
 );
 
 useSeoMeta({
-  title: "Избранные клиники"
+  title: "Избранные клиники",
 });
 </script>

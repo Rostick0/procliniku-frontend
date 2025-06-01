@@ -7,6 +7,10 @@
 </template>
 
 <script lang="ts" setup>
+useSeoMeta({
+  title: "Теги и услуги клиники",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });

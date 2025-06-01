@@ -40,6 +40,10 @@ import type IUser from "~/interfaces/models/User";
 
 const user = useState<IUser>("user");
 
+useSeoMeta({
+  title: "Профиль",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });

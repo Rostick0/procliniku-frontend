@@ -40,6 +40,10 @@ const { data: clinics, meta } = await useApi<IClinic[]>({
   init: true,
 });
 
+useSeoMeta({
+  title: "Клиник",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });

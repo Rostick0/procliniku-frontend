@@ -84,6 +84,7 @@ const phone = ref({
   bind: {
     label: "Телефон",
     type: "tel",
+    maska: maskaPhone,
   },
 });
 
@@ -96,6 +97,7 @@ const additional_phone = ref({
   bind: {
     label: "Доп. телефон",
     type: "tel",
+    maska: maskaPhone,
   },
 });
 

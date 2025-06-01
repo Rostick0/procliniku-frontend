@@ -35,7 +35,8 @@ const onSubmut = handleSubmit(async (values) => {
     if (icon?.id) data.icon_id = icon.id;
   }
 
-  if (data?.clinic_phones) data.clinic_phones = data.clinic_phones.join(",");
+  if (data?.clinic_phones)
+    data.clinic_phones = data.clinic_phones.map(convertPhoneToDb).join(",");
 
   if (data?.images) data.images = await getImageIdsFrom(values?.images);
 

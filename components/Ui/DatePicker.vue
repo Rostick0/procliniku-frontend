@@ -19,15 +19,7 @@ const props = defineProps({
   modelValue: [Date, String, Number, Object],
   placeholder: String,
   format: {
-    type: Function,
-    defaultValue: (date) => {
-      if (!date) {
-        return;
-      }
-      return `${date?.getDate()}/${
-        date?.getMonth() + 1
-      }/${date?.getFullYear()}`;
-    },
+    type: [Function, String],
   },
 });
 
@@ -38,7 +30,7 @@ function handleInput(date) {
 
 <style lang="scss">
 .dp__main {
-  .dp__pointer {
+  .dp__input {
     background-color: #f5f5f5;
     border: none;
     border-radius: 8px;

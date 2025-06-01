@@ -58,6 +58,10 @@ const {
   init: true,
 });
 
+useSeoMeta({
+  title: "Статьи клиники",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });

@@ -37,6 +37,10 @@ const user = useState<IUser>("user");
 //   })
 //   ?.then((res) => res?.data);
 
+useSeoMeta({
+  title: "Добавление работника в клинику",
+});
+
 definePageMeta({
   middleware: ["auth"],
 });
