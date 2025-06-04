@@ -14,7 +14,7 @@
 // }
 
 .btn {
-  @apply rounded-lg text-white text-sm font-bold ;
+  @apply rounded-lg text-white text-sm font-bold;
 
   background-color: var(--ui-color);
 
@@ -37,6 +37,10 @@
 
 .text-ui-2 {
   color: var(--ui-color-2);
+}
+
+.text-red {
+  color: var(--red-color);
 }
 
 .container {

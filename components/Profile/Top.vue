@@ -19,7 +19,8 @@
       <div class="text-sm mb-2" v-if="user?.birthdate">
         {{ getYearsString(moment().diff(moment(user?.birthdate), "years")) }}
       </div>
-      <div class="text-sm">{{ user?.email }}</div>
+      <div class="text-sm mb-2">{{ user?.email }}</div>
+      <button class="text-red text-sm w-fit" @click="logout()">Выйти</button>
     </div>
   </div>
 </template>
@@ -28,5 +29,5 @@
 import moment from "moment";
 import type IUser from "~/interfaces/models/User";
 
-const user = useState<IUser>("user");
+const { user, logout } = await useAuth();
 </script>

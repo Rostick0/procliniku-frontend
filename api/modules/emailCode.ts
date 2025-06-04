@@ -13,5 +13,5 @@ export interface IEmailCodesMethods {
 }
 
 export default <IEmailCodesMethods>{
-  create: async ({ data }) => useFetcher().post(`/email-code/`, data),
+  create: async ({ data }) => useFetcher().post(`/email-code`, data),
 };
