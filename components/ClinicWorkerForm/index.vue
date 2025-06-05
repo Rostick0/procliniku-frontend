@@ -73,7 +73,7 @@ const onSubmut = handleSubmit(async (values) => {
     return;
   }
 
-  success("Статья успешно добавлена");
+  success("Сотрудник успешно добавлена");
   navigateTo(ROUTES_NAMES.clinic_profile_clinics_workers(+route.params.id));
 });
 </script>

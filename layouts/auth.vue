@@ -1,11 +1,11 @@
 <template>
-  <div class="flex  lg:p-8 min-h-screen">
+  <div class="flex lg:p-8 min-h-screen">
     <div
       class="auth bg-white rounded-3xl flex flex-col grow items-center justify-center relative px-4"
     >
-      <div class="auth__logo absolute top-6">
+      <NuxtLink class="auth__logo absolute top-6" :to="ROUTES_NAMES.main">
         <IconLogo />
-      </div>
+      </NuxtLink>
       <div class="auth__inner w-full">
         <slot />
       </div>
