@@ -45,7 +45,7 @@ const email = ref({
 const password = ref({
   type: "text",
   name: "password",
-  rules: "required|max:255",
+  rules: "required|min:8|max:30",
   modelValue: "",
 
   bind: {

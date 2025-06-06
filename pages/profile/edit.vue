@@ -4,8 +4,8 @@
     <ProfileBack class="mb-4" :to="ROUTES_NAMES.profile"
       >Вернуться в профиль</ProfileBack
     >
-    <UserForm :user="user" />
-    <br />
+    <UserForm class="mb-12" :user="user" />
+    <UserFormPassword :user="user" />
   </div>
 </template>
 

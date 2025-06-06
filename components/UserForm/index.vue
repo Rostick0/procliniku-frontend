@@ -20,9 +20,6 @@ interface IProps {
 }
 
 const props = defineProps<IProps>();
-// import type IUser from "~/interfaces/models/User";
-
-// const user = useState<IUser>("user");
 
 const name = ref({
   type: "text",

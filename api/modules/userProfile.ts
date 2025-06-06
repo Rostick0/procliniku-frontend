@@ -3,8 +3,15 @@ import useFetcher from "../../utils/fetch";
 
 export interface IUserProfileMethods {
   update: ({ data }: { data: any }) => Promise<{ data: IUser } & IErrorData>;
+  updatePassword: ({
+    data,
+  }: {
+    data: any;
+  }) => Promise<{ data: IUser } & IErrorData>;
 }
 
 export default <IUserProfileMethods>{
   update: async ({ data }) => useFetcher().patch(`/user-profile`, data),
+  updatePassword: async ({ data }) =>
+    useFetcher().patch(`/user-profile/password`, data),
 };
