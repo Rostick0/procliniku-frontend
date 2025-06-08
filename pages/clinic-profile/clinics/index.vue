@@ -2,10 +2,7 @@
   <div class="container">
     <div class="profile shadow-md p-3">
       <ProfileTop />
-      <ProfileBack
-        :to="ROUTES_NAMES.clinic_profile_clinics_id(+$route.params.id)"
-        >Назад</ProfileBack
-      >
+      <ProfileBack :to="ROUTES_NAMES.clinic_profile_cnc">Назад</ProfileBack>
       <ProfileClinicList v-if="clinics?.length" :clinics="clinics" />
       <UiPagination v-model="filters.page" :meta="meta" />
       <div class="flex gap-x-2 items-center justify-center">
