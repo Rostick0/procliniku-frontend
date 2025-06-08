@@ -34,7 +34,7 @@ const { data: clinics, meta } = await useApi<IClinic[]>({
   apiMethod: "getAll",
   filters,
   params: {
-    "filterEQ[owner_id]": user.value?.id,
+    "filterEQ[clinic_workers.user_id]": user.value?.id,
     extends: "city",
   },
   init: true,

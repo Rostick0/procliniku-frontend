@@ -25,18 +25,6 @@ const route = useRoute();
 
 const user = useState<IUser>("user");
 
-// const article = await api.articles
-//   .get({
-//     id: route.params.id.toString(),
-//     params: {
-//       //   extends:
-//       // "clinic_phones,clinic_categories.category,clinic_services.service,images.image",
-//       //   "filterEQ[owner_id]": user.value?.id,
-//       //   extends: "city",
-//     },
-//   })
-//   ?.then((res) => res?.data);
-
 useSeoMeta({
   title: "Добавление статьи клиники",
 });

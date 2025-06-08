@@ -29,8 +29,6 @@ const article = await api.articles
     params: {
       //   extends:
       // "clinic_phones,clinic_categories.category,clinic_services.service,images.image",
-      //   "filterEQ[owner_id]": user.value?.id,
-      //   extends: "city",
     },
   })
   ?.then((res) => res?.data);

@@ -6,7 +6,7 @@
         <div class="clinic__title font-semibold text-xl mb-3">
           <span>{{ clinic?.name }}</span>
         </div>
-        <button class="flex ml-auto" @click="toggleFavorite">
+        <button class="flex ml-auto" v-if="user" @click="toggleFavorite">
           <IconFavorite :fill="isFavorite ? 'red' : '#BBBEC0'" />
         </button>
       </div>
@@ -66,23 +66,24 @@
         </div>
       </template>
     </UiBlock>
-
-    <UiBlock class="mt-5">
+    <UiBlock class="mt-5" v-if="user || reviews?.length">
       <template #top>Отзывы пациентов</template>
       <template #center>
-        <div class="mb-4" v-if="myReview && !isAddMark">
-          <div class="font-bold mb-2">Мой отзыв</div>
-          <ReviewItem :review="{ ...myReview, user }" />
-        </div>
-        <UiButton v-if="!isAddMark" @click="isAddMark = true"
-          >{{ myReview ? "Изменить" : "Добавить" }} отзыв</UiButton
-        >
-        <ReviewForm
-          v-else
-          @sended="(review) => ((myReview = review), (isAddMark = false))"
-          :review="myReview"
-          :clinic="clinic"
-        />
+        <template v-if="user">
+          <div class="mb-4" v-if="myReview && !isAddMark">
+            <div class="font-bold mb-2">Мой отзыв</div>
+            <ReviewItem :review="{ ...myReview, user }" />
+          </div>
+          <UiButton v-if="!isAddMark" @click="isAddMark = true"
+            >{{ myReview ? "Изменить" : "Добавить" }} отзыв</UiButton
+          >
+          <ReviewForm
+            v-else
+            @sended="(review) => ((myReview = review), (isAddMark = false))"
+            :review="myReview"
+            :clinic="clinic"
+          />
+        </template>
 
         <div class="flex flex-col gap-4" v-if="reviews?.length">
           <br />
@@ -181,7 +182,7 @@ const {
   apiMethod: "getAll",
   params: {
     "filterEQ[clinic.link_name]": route.params?.link_name,
-    "filterNEQ[user_id]": user.value?.id,
+    "filterNEQ[user_id]": user.value?.id ?? 0,
     extends: "user",
   },
 });

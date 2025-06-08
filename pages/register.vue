@@ -26,6 +26,12 @@
       <NuxtLink class="text-ui" :to="ROUTES_NAMES.login"
         >Войти в аккаунт</NuxtLink
       >
+      <p class="mt-2">
+        Регистрируясь на сайте, Вы принимаете соглашение
+        <NuxtLink class="text-ui" :to="ROUTES_NAMES.offer" target="_blank"
+          >Обработки персональных данных</NuxtLink
+        >
+      </p>
     </div>
   </form>
 </template>
